@@ -1,0 +1,4 @@
+<map id="evil::CSignal::add" name="evil::CSignal::add">
+<area shape="rect" id="node2" href="$classevil_1_1_c_slot.html#a0fc93f50a9d38cb448b679d360ff9ef8" title="uses the signals handlers to disconnect us " alt="" coords="176,5,327,32"/>
+<area shape="rect" id="node3" href="$classevil_1_1_c_signal.html#a3a51a3fa5d9a1e5c181526b119f90d9a" title="remove a slot from a signal " alt="" coords="375,5,517,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="evil::CSlot::disconnect" name="evil::CSlot::disconnect">
+<area shape="rect" id="node2" href="$classevil_1_1_c_signal.html#a6eca46188f30dde96aa43987ab830210" title="add a slot to a signal " alt="" coords="207,5,329,32"/>
+<area shape="rect" id="node4" href="$classevil_1_1_c_slot.html#a5878593a68de5a955b41a39a00675079" title="evil::CSlot::~CSlot" alt="" coords="204,56,332,83"/>
+<area shape="rect" id="node3" href="$classevil_1_1_c_slot.html#a3a434cdeb2058a8505130b20deb0075b" title="use the signals handlers to connect us up " alt="" coords="380,5,515,32"/>
+</map>
