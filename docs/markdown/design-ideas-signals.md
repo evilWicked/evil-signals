@@ -4,9 +4,9 @@ Design Ideas: Signals                       {#designsignals}
 A can of worms...
 -----------------
 
-Supporting Signals and Slots looked to be an easy implementation until reality dawned upon a pitfall filled world of complex pain. To see why consider the basic idea of a class (a signal) that calls a list of callbacks when required.  With C++11 bind and lambdas this is fairly straight forward. Nothing like the ease of doing it in Javascript but achievable.
+Supporting Signals and Slots looked to be an easy implementation until reality dawned upon a pain filled world of complex pitfalls. To see why consider the basic idea of a class (a signal) that calls a list of callbacks when required.  With C++11 bind and lambdas this is fairly straight forward. Nothing like the ease of doing it in Javascript but achievable.
 
-Before we start though, imagine for a second a signal between two sprites. A mouse click on a sprite causes some change we would like to propogate to another sprite. Easy as! just a callback eh.
+Before we start though, imagine for a second a signal between two sprites. A mouse click on a sprite causes some change we would like to propagate to another sprite. Easy as! just a callback eh.
 
 What happens if the second sprite has been deleted....?  
 
@@ -44,44 +44,9 @@ There are other features of the solution - but they are not essential to the bas
 Threading
 ---------
 
-Thread Safety:  You want what? ROFL!!....
+Thread Safety:  Threading is enabled by default.
 
-Ok it has thread support built in - but do you really know what you are asking for?  Think again.
-
-### Scenarios 
-1. A single signal on a single thread calling different slots on multiple threads.
-2. A single signal on multiple threads talking to the same slot.
-3. A single signal on a single thread talking to a single slot on multiple threads.
-4. A single signal on multiple threads talking to a single slot on multiple threads. 
-5. Changing the state of a signal from several threads (not receiving a signal - which doesn't change state).
-6. Changing the state a slot from several threads (not sending a signal - which doesn't change state).
-
-Multiple signals talking to a single slot does not exist at all so we can ignore all these options.
-
-The only real solution I have in mind is 1.  the situation where you have a signal sending to different slots
-on different threads.  
-
-For all the rest you can try, but lets just say your mileage may vary.....
-
-### Built In Mutex Support
-
-To cover any situation where you have mutiple threads interacting with a single signal you need to enable lock guards on the signal.
-
-    signal.useLockGuards(true); 
-
-It defaults to false. 
-
-This will cover adding and removing slots from multiple threads as well as changing thread priorities. Deleting the signal itself or parent object is your design problem.  The signal when deleted will tell all connected slots that it gone.  Sending a signal does not change state.
-
-*The exception to the above: The signal.addOnce() functionality sends a signal to a slot and then removes the slot. It is intended to handle one shot events.*
-
-To cover any situation where you have mutiple threads interacting with a single slot you need to enable lock guards on the slot.
-
-    slot.useLockGuards(true); 
-	
-It also defaults to false.
-
-This is probably a rare situation and I really don't like thinking about the mess of deleting a single slot that is on multiple threads.  But if you want to try it's there.
+TODO:Discuss locking. Whats locked whats not...
 
 Problems
 ---------
@@ -120,7 +85,7 @@ Mathematically it is the same as \f$ f1(f2(x)) \neq f2(f1(x)) \f$  which in the 
 
 **Does that mean I can't multi thread?**
 
-No it means I am not going to state that signals are thread safe - mutexes or not. I have built in support to enable signals and slots to be accessed from different threads. In particular a single thread talking to different slots on different threads.  This is only a small subset of all the possible scenarios and even then needs to be carefully thought about. 
+No it means I am not going to state that signals are thread safe - mutexes or not. I have built in support to enable signals and slots to be accessed from different threads. How you design around it is up to you.
 
 It is your responsibility to handle deleting objects that contain either signals or slots. Internally signals never delete slots and slots never delete signals. They just drop their internal references. Internally I am not using smart pointers which means I am not incrementing any reference counts if you decide to use them. When a slot or a signal is deleted it will inform its counterpart.
 
@@ -133,11 +98,7 @@ Both signals and slots maintain references (pointers in fact) to the other.  A S
 Similiarly when a slot (or the object containing it) is deleted, the slot tells the connected signal to remove its
 reference to that slot so that it won't attempt to talk to it.
 
-To be safe I would avoid any situation where the same signal is on two threads or the same slot is on two threads.
-
-What should be fine (with careful thought) is when a signal is talking to two different slots that live on different threads. In that case deletion of one slot won't affect the other and deletion of the signal will occur in both places at once as it should.
-
-In any case where the causal flow of your application results in simultaneous activities down different paths that produce different results and will combine at some point on a single object then the non abelian nature of state change IS going to bite you.
+In any situation where the causal flow of your application results in simultaneous activities down different paths that produce different results that will combine at some point on a single object then the non abelian nature of state change IS going to bite you mutex's or not..
 		
 Consider other operations outside signalling. Deleting objects containing a signal or slot. Passing objects by value.
 Are you doing it? Why are you doing it? What is 'const &' for? Do you know what would happen when the scope of the  function ends and the now copied object phones home to its counterpart to say goodbye...?  Just don't do it.

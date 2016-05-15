@@ -1,4 +1,4 @@
 <map id="evil::CSlot::setPriority" name="evil::CSlot::setPriority">
-<area shape="rect" id="node2" href="$classevil_1_1_c_slot.html#a719df29987e2f836138d5a68dab2474d" title="change the priority of a slot. zero is normal. Higher fires earlier. " alt="" coords="200,5,327,32"/>
-<area shape="rect" id="node3" href="$classevil_1_1_c_signal.html#ac8e450bf08ebeff796fe57d0675bf472" title="also handles informing slots that it has gone " alt="" coords="375,5,529,32"/>
+<area shape="rect" id="node2" href="$classevil_1_1_c_slot.html#a719df29987e2f836138d5a68dab2474d" title="Change the priority of a slot. zero is normal. Higher fires earlier. " alt="" coords="200,5,327,32"/>
+<area shape="rect" id="node3" href="$classevil_1_1_c_signal.html#ac8e450bf08ebeff796fe57d0675bf472" title="Also handles informing slots that it has gone. " alt="" coords="375,5,529,32"/>
 </map>

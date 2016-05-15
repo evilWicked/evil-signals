@@ -1,5 +1,7 @@
 #pragma once
 
+#include "test-case.h"
+
 #include <string>
 #include <functional>
 #include <chrono>
@@ -23,7 +25,7 @@ bool CTestCase::run() {
 	mbRun = true;
 	auto t0 = Time::now();
 
-	mbPass = mTestFunction(mResult);
+	mbPass = mTestFunction(mMessage);
 
 	auto t1 = Time::now();
 	fsec delta = t1 - t0;

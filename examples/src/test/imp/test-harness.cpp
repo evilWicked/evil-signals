@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "test-harness.h"
 
 namespace evil {
@@ -11,11 +10,11 @@ CTestHarness::CTestHarness(	const char *name, const char *log_name /*= "TEST_LOG
 							mbUseStdOut(mbUseStdOut), mResultTable(6) {
 
 	maColWidths.push_back(5);
-	maColWidths.push_back(12);
+	maColWidths.push_back(29);	
 	maColWidths.push_back(5);
+	maColWidths.push_back(6);
 	maColWidths.push_back(5);
-	maColWidths.push_back(5);
-	maColWidths.push_back(47);
+	maColWidths.push_back(29);
 
 }
 	
@@ -51,10 +50,10 @@ void CTestHarness::formatResults() {
 
 	mResultTable.insertCell("No.");
 	mResultTable.insertCell("Name");
-	mResultTable.insertCell("Stat");
 	mResultTable.insertCell("Run");
-	mResultTable.insertCell("MS");
-	mResultTable.insertCell("Result");
+	mResultTable.insertCell("State");
+	mResultTable.insertCell("ms");
+	mResultTable.insertCell("Failed On");
 
 	unsigned int i = 0;
 	for (auto it = mlistTests.begin(); it != mlistTests.end(); ++it) {
@@ -64,10 +63,10 @@ void CTestHarness::formatResults() {
 		i++;
 		mResultTable.insertCell(std::to_string(i));
 		mResultTable.insertCell((*it)->mName);
-		mResultTable.insertCell((*it)->mbPass ? "PASS" : "FAIL");
 		mResultTable.insertCell((*it)->mbRun ? "YES" : "NO");
+		mResultTable.insertCell((*it)->mbPass ? "PASS" : "FAIL");		
 		mResultTable.insertCell(std::to_string((*it)->mmMilliSecs.count()));
-		mResultTable.insertCell((*it)->mResult);
+		mResultTable.insertCell((*it)->mMessage);
 	}
 
 	adjustCols();
@@ -142,7 +141,7 @@ void CTestHarness::dump() {
 	
 void CTestHarness::add(const char *name, CTestCase::type_testfunc func) {
 
-	mlistTests.push_front(new CTestCase(name,func));
+	mlistTests.push_back(new CTestCase(name,func));
 }
 
 void CTestHarness::run() {

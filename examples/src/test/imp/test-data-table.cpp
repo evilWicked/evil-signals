@@ -1,5 +1,7 @@
 #pragma once
 
+#include "test-data-table.h"
+
 #include <vector>
 #include <string>
 

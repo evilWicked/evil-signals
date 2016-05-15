@@ -21,7 +21,7 @@ public:
 	typedef std::function<bool(std::string&)> type_testfunc;
 
 	const std::string mName;
-	std::string mResult;
+	std::string mMessage;
 	bool mbPass;
 	bool mbRun;
 	ms mmMilliSecs;
