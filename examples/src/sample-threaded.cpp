@@ -14,7 +14,6 @@
 
 #include <iostream>
 
-
 //include these as you normally would
 #include "evil/signals/signal.h"
 #include "evil/signals/slot.h"

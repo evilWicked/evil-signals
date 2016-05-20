@@ -11,14 +11,18 @@ evil signals is installed by simply including the source similar to a header onl
 
 include header files as usual using 
 
-    #include "evil/signals.h"
-    #include "evil/slots.h"
+    #include "evil/signals/signals.h"
+    #include "evil/signals/slots.h"
+	
+To bring in the implementation (*.cpp) files simply   
 
-Both classes are templated so thats all you need.  Take care to keep the implementation directory imp/ that 
-is found under the header files together with them as it contains teh implementation required for the template.
+    #include "evil/signals/wrapper.cpp"
+
+into a source file somewhere. You can give it it's own file or include it into an existing files. Whatever
+feels best.  Take care to keep the directory structure under evil intact. This contains other code that is used by either signals itself or the examples.
 
 
-Why not use CMake?  CMake is used in examples but for the main code. CMake would require configuration and testing for each platform which if it doesn't work would generate issues. So no.
+Why not use CMake?  CMake is used in examples but not for the main code. CMake would require configuration and testing for each platform which if it doesn't work would generate issues. So no.
 
 Compiler Options
 ----------------

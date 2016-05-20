@@ -1,4 +1,0 @@
-this directory contains any evil libraries that are only required to build
-the samples.
-
-You can ignore them for normal usage.
