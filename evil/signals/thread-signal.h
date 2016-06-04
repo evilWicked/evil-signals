@@ -30,7 +30,7 @@ namespace evil {
 
 			ReadWriteLock lock(&mRWMutex, ReadWriteLock::READ);
 			for(auto& x : mlistSlots) {
-				Slot<Args...> *slot = static_cast<Slot<Args...>*>(x);
+				ThreadSlot<Args...> *slot = static_cast<ThreadSlot<Args...>*>(x);
 				std::lock_guard<std::mutex> slot_lock(slotMutex(slot));
 
 				if(slot->isActive() && slot->hasFunction()) {

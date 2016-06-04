@@ -4,6 +4,8 @@
 //it has errors. That is due to it not having any understanding of the context it runs in.
 Tests.add("Thread: Stress Dispatch", [](evil::TestHarness *th,std::string& result)mutable->bool {
 
+	//NOTE This test does test threading.
+
 		bool failed = false;
 		const int numSlots = 20;
 

@@ -5,6 +5,8 @@
 
 Tests.add("Thread: Fire Once", [](evil::TestHarness *th, std::string& result)mutable->bool {
 
+	//NOTE This test does not test threading - only checks basic functionality.
+
 	bool failed = false;
 	//one signal many slots
 
@@ -29,7 +31,7 @@ Tests.add("Thread: Fire Once", [](evil::TestHarness *th, std::string& result)mut
 	//fire the signal
 	Asig.dispatch(1);
 
-	//add teh values
+	//add the values
 	if (iTestVal != numSlots) {
 		result = "ThreadSignal::add";
 		failed = true;

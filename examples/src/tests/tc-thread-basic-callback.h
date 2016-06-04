@@ -5,6 +5,8 @@
 
 Tests.add("Thread: Basic Callback", [](evil::TestHarness *th,std::string& result)mutable->bool {
 
+		//NOTE This test does not test threading - only checks basic functionality.
+		
 		bool failed = false;
 		//create a signal
 		evil::ThreadSignal<int, double, std::string&> Asig("Asig");

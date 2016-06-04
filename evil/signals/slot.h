@@ -29,7 +29,6 @@ namespace evil {
 		///@param f a function with arguments defined by template instantiation. 
 		//the signal and associated slots.
 		void attach(std::function<void(Args...)> f) {
-			//std::lock_guard<std::mutex> lock(mMutex);
 			mFunction = f;
 		};
 
@@ -39,7 +38,6 @@ namespace evil {
 		///used to define the signal and associated slots.
 		template <typename C>
 		void attach_class(C* c, void(C:: *f)(Args...)) {
-			//std::lock_guard<std::mutex> lock(mMutex);
 			mFunction=util::bind_class(c,f);
 		};
 		

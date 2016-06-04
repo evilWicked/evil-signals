@@ -6,6 +6,8 @@
 
 Tests.add("Thread: Basic Ops", [](evil::TestHarness *th,std::string& result)mutable->bool {
 	
+	//NOTE This test does not test threading - only checks basic functionality.
+
 		//create a signal
 		evil::ThreadSignal<> Asig("Asig");
 		//create a slot

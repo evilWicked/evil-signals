@@ -5,7 +5,8 @@
 
 Tests.add("Thread Stress Modify", [](evil::TestHarness *th, std::string& result)mutable->bool {
 
-	
+	//NOTE This test does test threading.
+
 	namespace m = evil::math;
 
 	//create some signals

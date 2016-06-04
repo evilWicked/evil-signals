@@ -47,6 +47,9 @@ Usage
 Usage is fairly simple. Both the signal and the slot are templated to handle different arguments being passed between the signal
 and the slot when a signal is dispatched.
 
+	evil::Signal<...Args>
+	evil::Slot<...Args>
+		
 As an example if we want to use callbacks of the form
 
 	void foo(int i){...};
@@ -62,8 +65,8 @@ We can create a signal and slot that would enable an integer to be passed from t
 	
 The threadsafe versions are created using.
 	
-	evil::ThreadSignal<int> sig;
-	evil::ThreadSlot<int> slot;
+	evil::ThreadSignal<...Args> sig;
+	evil::ThreadSlot<...Args> slot;
 
 The only restriction is that callbacks need to have a void return.  The signal has no way of
 doing anything with a return value anyway.

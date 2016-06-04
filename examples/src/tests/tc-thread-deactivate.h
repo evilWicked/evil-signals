@@ -6,6 +6,9 @@
 
 Tests.add("Thread: Deactivate", [](evil::TestHarness *th,std::string& result)mutable->bool {
 	
+	//NOTE This test does not test threading - only checks basic functionality.
+
+
 	bool failed = false;
 	const int numSlots = 20;
 
