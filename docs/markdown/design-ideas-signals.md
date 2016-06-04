@@ -44,9 +44,16 @@ There are other features of the solution - but they are not essential to the bas
 Threading
 ---------
 
-Thread Safety:  Threading is enabled by default.
+Thread Safety: 
 
-TODO:Discuss locking. Whats locked whats not...
+On the signal side of things I am using read write locks which enable multiple reads and single writes. This means that multiple signals can be sent in parallel while changes to the structure
+of the signal - additions and removals of slots is protected.
+
+On the slot side a combination of atomic variables and normal lock_guards are used.
+
+I have not wrapped the dispatch (actual callback being called) on a slot with lock_guards.
+If you are interacting with one object from multiple threads you will need to consider threading impacts and sensitive data access yourself.
+
 
 Problems
 ---------
@@ -87,7 +94,7 @@ Mathematically it is the same as \f$ f1(f2(x)) \neq f2(f1(x)) \f$  which in the 
 
 No it means I am not going to state that signals are thread safe - mutexes or not. I have built in support to enable signals and slots to be accessed from different threads. How you design around it is up to you.
 
-It is your responsibility to handle deleting objects that contain either signals or slots. Internally signals never delete slots and slots never delete signals. They just drop their internal references. Internally I am not using smart pointers which means I am not incrementing any reference counts if you decide to use them. When a slot or a signal is deleted it will inform its counterpart.
+It is your responsibility to handle deleting objects that contain either signals or slots. Internally signals never delete slots and slots never delete signals. They just drop their internal references. Internally I am not using smart pointers which means I am not incrementing any reference counts if you decide to use them. When a slot or a signal is deleted it will inform its counterpart to drop any internal references.
 
 
 Design Features That May Impact Threading.
@@ -100,7 +107,6 @@ reference to that slot so that it won't attempt to talk to it.
 
 In any situation where the causal flow of your application results in simultaneous activities down different paths that produce different results that will combine at some point on a single object then the non abelian nature of state change IS going to bite you mutex's or not..
 		
-Consider other operations outside signalling. Deleting objects containing a signal or slot. Passing objects by value.
-Are you doing it? Why are you doing it? What is 'const &' for? Do you know what would happen when the scope of the  function ends and the now copied object phones home to its counterpart to say goodbye...?  Just don't do it.
+Consider other operations outside signalling. Deleting objects containing a signal or slot?
 
 Restrict your threads for tasks that can clearly be independently broken out. Don't try and be clever it's just too hard.

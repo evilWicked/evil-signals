@@ -4,8 +4,13 @@
 
 namespace evil {
 
+	///@brief A data table used to capture test results in memory.
+	///
+	///A data table to capture the results of testing in memory so that delays due to simultaneous access
+	///of the terminal don't impact on results.  In simle terms we collect all results and dump at the end 
+	///rather than while testing is proceeding. 
 template<typename T>
-	class CDataTable {
+	class TestDataTable {
 
 		typedef std::vector<T> display_row;
 		typedef std::vector<display_row> display_table;
@@ -18,7 +23,7 @@ template<typename T>
 
 	public:
 		///create a data table with no rows in it
-		CDataTable(int cols);
+		TestDataTable(int cols);
 
 		int Cols();
 		int Rows();
@@ -56,12 +61,12 @@ template<typename T>
 	public:
 		//Hide and disable/default all constructors and destructors unless specifically overridden
 		//this is a mnemonic to force me to think about things. if overridden they are commented
-		//CDataTable() = default;
-		~CDataTable() = default;
-		CDataTable(const CDataTable& rhs) = delete;
-		CDataTable& operator=(const CDataTable& rhs) = delete;
-		CDataTable(CDataTable&& other) = delete;
-		CDataTable& operator=(CDataTable&& other) = delete;
+		//TestDataTable() = default;
+		~TestDataTable() = default;
+		TestDataTable(const TestDataTable& rhs) = delete;
+		TestDataTable& operator=(const TestDataTable& rhs) = delete;
+		TestDataTable(TestDataTable&& other) = delete;
+		TestDataTable& operator=(TestDataTable&& other) = delete;
 	};
 }
 

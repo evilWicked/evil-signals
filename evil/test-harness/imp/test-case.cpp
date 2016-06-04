@@ -8,20 +8,19 @@
 
 namespace evil {
 
-CTestCase::CTestCase(const char *name,type_testfunc func)
-	:mTestFunction(func), mName(name) {
+TestCase::TestCase(TestHarness *th,const char *name,type_testfunc func)
+	:mpHarness{th}, mTestFunction(func), mName(name) {
 	mbRun = false;
 	mbPass = false;
-
 	mmMilliSecs= ms::zero();
 }
 
-bool CTestCase::run() {
+bool TestCase::run() {
 
 	mbRun = true;
 	auto t0 = Time::now();
 
-	mbPass = mTestFunction(mMessage);
+	mbPass = mTestFunction(mpHarness,mMessage);
 
 	auto t1 = Time::now();
 	fsec delta = t1 - t0;

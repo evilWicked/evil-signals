@@ -3,24 +3,24 @@
 //the main program to clean things up a little. Dont worry about Visual Studio making it look like 
 //it has errors. That is due to it not havingany understanding of the context it runs in.
 
-Tests.add("Multi Connect", [](evil::TestHarness *th,std::string& result)mutable->bool {
+Tests.add("Thread: Multi Connect", [](evil::TestHarness *th,std::string& result)mutable->bool {
 
 		bool failed = false;
 		//one signal many slots
 
 		//create a signal
-		evil::Signal<> Asig("Asig");
+		evil::ThreadSignal<> Asig("Asig");
 
 		int numSlots = 20;
 		//create a pile of slots and attach them to the signal
-		std::vector<evil::Slot<>> slts(numSlots);
+		std::vector<evil::ThreadSlot<>> slts(numSlots);
 		for (int i = 0; i < numSlots; ++i) {
 			Asig.add(&slts[i]);
 		}
 
 		//count the slots - should be numSlots
 		if (Asig.numSlots() != numSlots) {
-			result = "Signal::add";
+			result = "ThreadSignal::add";
 			failed = true;
 		}
 		
@@ -28,7 +28,7 @@ Tests.add("Multi Connect", [](evil::TestHarness *th,std::string& result)mutable-
 		if(!failed){
 
 			//create temporary list - we want to check are slots are still connected later
-			std::list<evil::Slot<> *> tmp;
+			std::list<evil::ThreadSlot<> *> tmp;
 
 			for (int i = 0; i < numSlots; i++) {
 				tmp.push_back(&slts[i]);
@@ -39,7 +39,7 @@ Tests.add("Multi Connect", [](evil::TestHarness *th,std::string& result)mutable-
 				int N = Asig.numSlots();
 				int r=rand() % N ;	
 
-				std::list<evil::Slot<> *>::iterator it = tmp.begin();
+				std::list<evil::ThreadSlot<> *>::iterator it = tmp.begin();
 				std::advance(it, r);
 				
 				Asig.remove((*it));
@@ -48,7 +48,7 @@ Tests.add("Multi Connect", [](evil::TestHarness *th,std::string& result)mutable-
 
 			//count the number of slots - should be none
 			if (Asig.numSlots() != 0) {
-				result = "Signal::remove sig fail";
+				result = "ThreadSignal::remove sig fail";
 				failed = true;
 			}
 
@@ -62,7 +62,7 @@ Tests.add("Multi Connect", [](evil::TestHarness *th,std::string& result)mutable-
 				}
 		
 				if (count != 0) {
-					result = "Signal::remove slot fail";
+					result = "ThreadSignal::remove slot fail";
 					failed = true;
 				}
 			}			

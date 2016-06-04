@@ -6,60 +6,74 @@
 
 namespace evil {
 
-	/**
-	A Read Write Lock based on Raynal pseudo code from wikipedia. This will allow concurrent reads 
-	and sequential writes
-	
-	https://en.wikipedia.org/wiki/Readers%E2%80%93writer_lock
-
-	*/
-	class CReadWriteMutex{
-
-		std::mutex mReadMutex;
-		std::mutex mWriteMutex;
-	
-		unsigned int muNumReads;
+	/** @brief The internals of the read write lock - not really a mutex although used like one.
 		
-		public:
-			CReadWriteMutex() {
-				muNumReads=0;
-			};
+		The ReadWriteMutex is NOT a mutex!!!  In fact it provides the internals of a read write lock.
+		But then again our ReadWriteLock is not a lock its more of a wrapper around this class.  None the less
+		this class - our so called ReadWriteMutex wraps up a mutex with condition variables to provide
+		a parallel reas single write mechanism
+	*/
+	class ReadWriteMutex{
 
-			void readLock() { 
-				mReadMutex.lock(); 
-				muNumReads++;
-				if (muNumReads == 1) {
-					mWriteMutex.lock();
-				}
-				mReadMutex.unlock();
-			}
+		std::mutex mMutex;
+		std::condition_variable mReadCond;
+		std::condition_variable mWriteCond;
+		
+		unsigned int muNumReads;
+		bool mbIsWriting;
 
-			void readUnlock() { 
-				mReadMutex.lock();
-				muNumReads--;
-				if (muNumReads == 0) {
-					mWriteMutex.unlock();
-				}
-				mReadMutex.unlock(); 
-			}
-
-			void writeLock() { 
-				mWriteMutex.lock();
-			}
-
-			void writeUnlock() {
-				mWriteMutex.unlock(); 
-			}
-
+	private:
 	
+	public:
+		ReadWriteMutex() {
+			muNumReads = 0;
+			mbIsWriting = false;
+		};
+
+		///Lock this mutex in read mode. 
+		void readLock() { 		
+			std::unique_lock<std::mutex> lock(mMutex);
+			while (mbIsWriting) {
+				mReadCond.wait(lock);
+			}
+			muNumReads++;
+		}
+
+		///Unlock this mutex from read mode. 
+		void readUnlock() { 
+			std::unique_lock<std::mutex> lock(mMutex);
+			muNumReads--;
+			if (!muNumReads) {
+				mWriteCond.notify_one();
+			}
+		}
+
+		///Lock this mutex into write mode
+		void writeLock() {
+			std::unique_lock<std::mutex> lock(mMutex);
+			while (mbIsWriting || muNumReads) {
+				mWriteCond.wait(lock);
+			}
+			mbIsWriting = true;
+		}
+
+		///Unlock this mutex from write mode
+		void writeUnlock() {
+			std::unique_lock<std::mutex> lock(mMutex);
+
+			mbIsWriting=false;
+			mReadCond.notify_all();
+			mWriteCond.notify_one();
+		}
+
 	public:
 		//Hide and disable/default all constructors and destructors unless specifically overridden
 		//this is a mnemonic to force me to think about things. if overridden they are commented
 		//CReadWriteMutex() = default;
-		~CReadWriteMutex() = default;
-		CReadWriteMutex(const CReadWriteMutex& rhs) = delete;
-		CReadWriteMutex& operator=(const CReadWriteMutex& rhs) = delete;
-		CReadWriteMutex(CReadWriteMutex&& other) = delete;
-		CReadWriteMutex& operator=(CReadWriteMutex&& other) = delete;
+		~ReadWriteMutex() = default;
+		ReadWriteMutex(const ReadWriteMutex& rhs) = delete;
+		ReadWriteMutex& operator=(const ReadWriteMutex& rhs) = delete;
+		ReadWriteMutex(ReadWriteMutex&& other) = delete;
+		ReadWriteMutex& operator=(ReadWriteMutex&& other) = delete;
 	};
 }

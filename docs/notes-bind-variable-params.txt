@@ -1,8 +1,0 @@
-
-
-working backwards  
-
-bind a function with a tuple of parameters.
-
-
-auto x = std::make_tuple(1, 4.3, std::string{"Hello!"});

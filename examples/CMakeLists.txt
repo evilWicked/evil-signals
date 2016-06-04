@@ -34,6 +34,9 @@ set(EVIL_THREAD_DIR ${EVIL_DIR}/thread)
 set(EVIL_UTIL_DIR ${EVIL_DIR}/util)
 #set(EVIL_UTIL_IMP_DIR ${EVIL_UTIL_DIR}/imp) #none so far
 
+set(EVIL_MATH_DIR ${EVIL_DIR}/math)
+#set(EVIL_MATH_IMP_DIR ${EVIL_UTIL_DIR}/imp) #none so far
+
 
 #the example dir - which is where we actually are - for completeness
 set(EVIL_EXAMPLE_DIR ${EVIL_REPO_DIR}/examples) 
@@ -98,6 +101,11 @@ file(GLOB EVIL_UTIL_HEADERS ${EVIL_UTIL_DIR}/*.h)
 #file(GLOB EVIL_UTIL_IMP_SOURCE ${EVIL_UTIL_IMP_DIR}/*.cpp) #none
 set(EVIL_UTIL_FILES ${EVIL_UTIL_HEADERS})
 
+file(GLOB EVIL_MATH_HEADERS ${EVIL_MATH_DIR}/*.h)
+#file(GLOB EVIL_MATH_SOURCE ${EVIL_MATH_DIR}/*.cpp) #none
+#file(GLOB EVIL_MATH_IMP_SOURCE ${EVIL_MATH_IMP_DIR}/*.cpp) #none
+set(EVIL_MATH_FILES ${EVIL_MATH_HEADERS})
+
 file(GLOB EVIL_EXAMPLE_SOURCE ${EVIL_EXAMPLE_SRC_DIR}/*.cpp)
 file(GLOB EVIL_EXAMPLE_TESTS ${EVIL_EXAMPLE_TEST_DIR}/*.h)
 
@@ -110,6 +118,8 @@ add_custom_target(test-harness-NOBUILD COMMENT "Project not built. Files are inc
 add_custom_target(evil-thread-NOBUILD COMMENT "Project not built. Files are included by other targets" SOURCES ${EVIL_THREAD_FILES})
 
 add_custom_target(evil-util-NOBUILD COMMENT "Project not built. Files are included by other targets" SOURCES ${EVIL_UTIL_FILES})
+
+add_custom_target(evil-math-NOBUILD COMMENT "Project not built. Files are included by other targets" SOURCES ${EVIL_MATH_FILES})
 
 add_custom_target(test-cases-NOBUILD COMMENT "Project not built. Files are included by other targets" SOURCES ${EVIL_EXAMPLE_TESTS})
 

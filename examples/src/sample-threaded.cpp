@@ -22,10 +22,10 @@
 #include "evil/signals/evil-wrapper.cpp"
 
 //bring in the evil test harness - this includes its own implementations
-#include "evil/test/test-harness.h"
+#include "evil/test-harness/test-harness.h"
 
 //bring in the test wrapper which includes all the implementation files
-#include "evil/test/evil-wrapper.cpp"
+#include "evil/test-harness/evil-wrapper.cpp"
 
 //some test objects we will use to test things are working
 

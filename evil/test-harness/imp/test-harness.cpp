@@ -4,7 +4,7 @@
 
 namespace evil {
 	
-CTestHarness::CTestHarness(	const char *name, const char *log_name /*= "TEST_LOG.TXT"*/, 
+TestHarness::TestHarness(	const char *name, const char *log_name /*= "TEST_LOG.TXT"*/, 
 							bool stopOnError /*= false*/, bool useStdOut /*= true*/)
 							:mName(name),mLog(log_name), mbStopOnError(mbStopOnError), 
 							mbUseStdOut(mbUseStdOut), mResultTable(6) {
@@ -19,13 +19,13 @@ CTestHarness::CTestHarness(	const char *name, const char *log_name /*= "TEST_LOG
 
 }
 	
-CTestHarness::~CTestHarness() {
+TestHarness::~TestHarness() {
 	for (auto it = mlistTests.begin(); it != mlistTests.end(); ++it) {
 		delete(*it);
 	};
 }
 
-void CTestHarness::formatResults() {
+void TestHarness::formatResults() {
 
 	unsigned int passnum = 0;
 	unsigned int runnum = 0;
@@ -74,7 +74,7 @@ void CTestHarness::formatResults() {
 }
 
 
-void CTestHarness::adjustCols() {
+void TestHarness::adjustCols() {
 
 	int rows = mResultTable.Rows();
 	int cols = mResultTable.Cols();
@@ -92,7 +92,7 @@ void CTestHarness::adjustCols() {
 	}
 }
 
-void CTestHarness::dumpLog() {
+void TestHarness::dumpLog() {
 	std::ofstream log;
 	log.open(mLog);
 
@@ -112,7 +112,7 @@ void CTestHarness::dumpLog() {
 	log.close();
 }
 
-void CTestHarness::dumpConsole() {
+void TestHarness::dumpConsole() {
 
 	int rows = mResultTable.Rows();
 	int cols = mResultTable.Cols();
@@ -129,7 +129,7 @@ void CTestHarness::dumpConsole() {
 	}
 }
 
-void CTestHarness::dump() {
+void TestHarness::dump() {
 
 	if (!mLog.empty()) {
 		dumpLog();
@@ -140,12 +140,12 @@ void CTestHarness::dump() {
 	}
 }
 	
-void CTestHarness::add(const char *name, CTestCase::type_testfunc func) {
+void TestHarness::add(const char *name, TestCase::type_testfunc func) {
 
-	mlistTests.push_back(new CTestCase(name,func));
+	mlistTests.push_back(new TestCase(this,name,func));
 }
 
-void CTestHarness::outDot() {
+void TestHarness::outDot() {
 	
 	if (mbUseStdOut) {
 		std::cout << '.';
@@ -156,7 +156,7 @@ void CTestHarness::outDot() {
   }
 }
 
-void CTestHarness::run() {
+void TestHarness::run() {
 
 	test_list_iter it;
 	int count=0;

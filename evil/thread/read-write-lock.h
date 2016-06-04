@@ -5,6 +5,8 @@
 namespace evil {
 
 	/**
+	@brief a Read Write implementation to allow parallel reads and sequential writes.
+
 	The ReadWriteLock enables multiple reader to exist concurrently while restricting writes to to 
 	sequential access.  The particular scenario is a list that has readers progressing down it at 
 	those times we are not making changes to the structure of the list.  
@@ -16,16 +18,15 @@ namespace evil {
 		3. Reads can not occur when a write is in progress.
 
 	*/
-
-	class CReadWriteLock {
-		public:
+	class ReadWriteLock {
+	public:
 		enum enumType {READ,WRITE};
 		private:
 		enumType menumType;
-		CReadWriteMutex *mpRWmutex;
-		public:
+		ReadWriteMutex *mpRWmutex;
+	public:
 
-			CReadWriteLock(CReadWriteMutex *pRWmutex,enumType type){
+			ReadWriteLock(ReadWriteMutex *pRWmutex,enumType type){
 				menumType = type;
 				mpRWmutex = pRWmutex;
 
@@ -39,8 +40,8 @@ namespace evil {
 				}
 			};
 
-
-			~CReadWriteLock(){
+			
+			~ReadWriteLock(){
 
 				switch (menumType) {
 					case READ:{
@@ -58,9 +59,9 @@ namespace evil {
 		//this is a mnemonic to force me to think about things. if overridden they are commented
 		//CReadWriteLock() = default;
 		//~CReadWriteLock() = default;
-		CReadWriteLock(const CReadWriteLock& rhs) = delete;
-		CReadWriteLock& operator=(const CReadWriteLock& rhs) = delete;
-		CReadWriteLock(CReadWriteLock&& other) = delete;
-		CReadWriteLock& operator=(CReadWriteLock&& other) = delete;
+		ReadWriteLock(const ReadWriteLock& rhs) = delete;
+		ReadWriteLock& operator=(const ReadWriteLock& rhs) = delete;
+		ReadWriteLock(ReadWriteLock&& other) = delete;
+		ReadWriteLock& operator=(ReadWriteLock&& other) = delete;
 	};
 }

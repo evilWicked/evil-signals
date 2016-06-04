@@ -1,5 +1,0 @@
-<map id="evil::CSignal::~CSignal" name="evil::CSignal::~CSignal">
-<area shape="rect" id="node2" href="$classevil_1_1_c_signal.html#aa3f82f9a751f9ed5f5fb5ef998b337a9" title="Remove all slots. " alt="" coords="208,5,365,32"/>
-<area shape="rect" id="node3" href="$classevil_1_1_c_slot.html#a719df29987e2f836138d5a68dab2474d" title="Change the priority of a slot. zero is normal. Higher fires earlier. " alt="" coords="223,56,350,83"/>
-<area shape="rect" id="node4" href="$classevil_1_1_c_slot.html#a2a4657c4d20d62ac91196eed5f6b7792" title="allow a slot to be turned off &#45; perhaps during a pause state. stops it receiving a signal ..." alt="" coords="413,56,560,83"/>
-</map>

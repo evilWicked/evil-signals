@@ -8,34 +8,34 @@
 namespace evil {
 
 	/**
-		An implementation of a thread safe queue we are using for threading. Technically it can be used
-		for anything else as well but we will leave the ambiguity in naming where it is.
+		@brief An implementation of a thread safe queue we are using for threading. 
+		
+		Technically it can be usedfor anything else as well but we will leave the ambiguity in naming where it is.
 
 		largely (99.99%) taken from http://roar11.com/2016/01/a-platform-independent-thread-pool-using-c14/
 		
 
 		by WillP
 	*/
-
 	template <typename T>
-	class CThreadQueue {
+	class ThreadQueue {
 
-		std::atomic_bool m_valid{ true };
-		mutable std::mutex m_mutex;
-		std::queue<T> m_queue;
-		std::condition_variable m_condition;
+		std::atomic_bool mValid{ true };
+		mutable std::mutex mMutex;
+		std::queue<T> mQueue;
+		std::condition_variable mCondition;
 
 	public:
-		CThreadQueue() = default;
+		ThreadQueue() = default;
 
-		~CThreadQueue(){
+		~ThreadQueue(){
 			invalidate();
 		}
 
 		void push(T value){
-			std::lock_guard<std::mutex> lock{ m_mutex };
-			m_queue.push(std::move(value));
-			m_condition.notify_one();
+			std::lock_guard<std::mutex> lock{ mMutex };
+			mQueue.push(std::move(value));
+			mCondition.notify_one();
 		}
 
 		/**
@@ -43,13 +43,13 @@ namespace evil {
 		* Returns true if a value was successfully written to the out parameter, false otherwise.
 		*/
 		bool tryPop(T& out){
-			std::lock_guard<std::mutex> lock{ m_mutex };
-			if (m_queue.empty() || !m_valid)
+			std::lock_guard<std::mutex> lock{ mMutex };
+			if (mQueue.empty() || !mValid)
 			{
 				return false;
 			}
-			out = std::move(m_queue.front());
-			m_queue.pop();
+			out = std::move(mQueue.front());
+			mQueue.pop();
 			return true;
 		}
 
@@ -59,21 +59,22 @@ namespace evil {
 		* Returns true if a value was successfully written to the out parameter, false otherwise.
 		*/
 		bool waitPop(T& out){
-			std::unique_lock<std::mutex> lock{ m_mutex };
-			m_condition.wait(lock, [this]()
+			std::unique_lock<std::mutex> lock{ mMutex };
+			mCondition.wait(lock, [this]()
 			{
-				return !m_queue.empty() || !m_valid;
+				return !mQueue.empty() || !mValid;
 			});
 			/*
 			* Using the condition in the predicate ensures that spurious wakeups with a valid
 			* but empty queue will not proceed, so only need to check for validity before proceeding.
 			*/
-			if (!m_valid)
+			if (!mValid)
 			{
 				return false;
 			}
-			out = std::move(m_queue.front());
-			m_queue.pop();
+			out = std::move(mQueue.front());
+			mQueue.pop();
+
 			return true;
 		}
 
@@ -82,8 +83,8 @@ namespace evil {
 		*/
 		bool empty(void) const
 		{
-			std::lock_guard<std::mutex> lock{ m_mutex };
-			return m_queue.empty();
+			std::lock_guard<std::mutex> lock{ mMutex };
+			return mQueue.empty();
 		}
 
 		/**
@@ -91,12 +92,12 @@ namespace evil {
 		*/
 		void clear(void)
 		{
-			std::lock_guard<std::mutex> lock{ m_mutex };
-			while (!m_queue.empty())
+			std::lock_guard<std::mutex> lock{ mMutex };
+			while (!mQueue.empty())
 			{
-				m_queue.pop();
+				mQueue.pop();
 			}
-			m_condition.notify_all();
+			mCondition.notify_all();
 		}
 
 		/**
@@ -108,9 +109,9 @@ namespace evil {
 		*/
 		void invalidate(void)
 		{
-			std::lock_guard<std::mutex> lock{ m_mutex };
-			m_valid = false;
-			m_condition.notify_all();
+			std::lock_guard<std::mutex> lock{ mMutex };
+			mValid = false;
+			mCondition.notify_all();
 		}
 
 		/**
@@ -118,8 +119,8 @@ namespace evil {
 		*/
 		bool isValid(void) const
 		{
-			std::lock_guard<std::mutex> lock{ m_mutex };
-			return m_valid;
+			std::lock_guard<std::mutex> lock{ mMutex };
+			return mValid;
 		}
 
 
@@ -128,10 +129,10 @@ namespace evil {
 		//this is a mnemonic to force me to think about things. if overridden they are commented
 		//CThreadQueue() = default;
 		//~CThreadQueue() = default;
-		CThreadQueue(const CThreadQueue& rhs) = delete;
-		CThreadQueue& operator=(const CThreadQueue& rhs) = delete;
-		CThreadQueue(CThreadQueue&& other) = delete;
-		CThreadQueue& operator=(CThreadQueue&& other) = delete;
+		ThreadQueue(const ThreadQueue& rhs) = delete;
+		ThreadQueue& operator=(const ThreadQueue& rhs) = delete;
+		ThreadQueue(ThreadQueue&& other) = delete;
+		ThreadQueue& operator=(ThreadQueue&& other) = delete;
 
 	};
 

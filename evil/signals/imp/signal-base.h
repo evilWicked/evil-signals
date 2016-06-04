@@ -13,96 +13,87 @@
 
 namespace evil {
 
+	
+	class SlotBase;//forward declaration
+
 	/**
-
-
-	See the discussion in [Design Ideas: Signals](@ref designsignals)
+	@brief  the base class used by both the evil::Signal and evil::ThreadSignal class. 
 
 	Have drawn upon the basic outline of a signal defined in http://simmesimme.github.io/tutorials/2015/09/20/signal-slot/
 	As well as some info on function pointer usage http://www.cplusplus.com/forum/general/159730/
-
 	*/
-	class CSlotBase;
-
-	class CSignalBase {
+	class SignalBase {
 	protected:
 
-		friend class CSlotBase;
+		friend class SlotBase;
 
-		typedef std::list<CSlotBase *> type_slot_list;
-		typedef std::list<CSlotBase *> type_slot_list;
+		typedef std::list<SlotBase *> type_slot_list;
 		typedef type_slot_list::iterator type_slot_list_iter;
-		typedef type_slot_list::const_iterator type_slot_list_citer;
-
+		
 		/// Optional. Used to give the signal a name - helps with debugging
 		const std::string mstrName;
-
+		const bool mbThreadSafe;
+		ReadWriteMutex mRWMutex;
 		type_slot_list mlistSlots;
 
-		CReadWriteMutex mRWmutex;
 
-								//atomic functions handle one discrete step in the connection process between slots
-								//atomic does NOT refer to atomic in the thread sense even though variables may be an atomic type
-								//atomic operations should not themselves create a lock_guard
+		void rawRemoveSlot(SlotBase* slot);
+		void rawRemoveAll();
+		void rawInsertSlot(SlotBase *slot);
 
-		bool atomicHasSlot(CSlotBase* slot);
-		void atomicAddSlot(CSlotBase* slot);
-		void atomicRemoveSlot(CSlotBase* slot);
-		void atomicClear();
-
-		//these handle the actual processes that make changes to the signal. Processes should be complete
-		//activities that can be called by either the public or friend api. will They call atomic operations
-		//and place lock guards around things as appropriate
-		void processAdd(CSlotBase* slot);
-		void processAddOnce(CSlotBase* slot);
-		void processRemove(CSlotBase* slot);
-		void processRemoveAll();
-		void processSortSlots();
-		//void processDispatch(Args...);
-
-		//functions only required by the slot class
-		void friendAdd(CSlotBase* slot);
-		void friendAddOnce(CSlotBase* slot);
-		void friendRemove(CSlotBase* slot);
-		void friendSortSlots();
-		bool friendHasSlot(CSlotBase* slot);
+		///used internally to remove fireOnce slots
+		void removeCompletedSlots();
+		void addSlot(SlotBase* slot, bool fire_once, int priority = 0, bool active = true);
+		
+		//helper to get past children of a friend aren't friend rules
+		//when called by the final templated signal class
+		std::mutex& slotMutex(SlotBase *slot);
 
 	public:
-		///Constructor - you can optionally name this signal.
-		CSignalBase(const char* name = NO_NAME);
+
+		///Constructor - you can optionally name this signal. Ths signal can be created to either be threadsafe 
+		///uninsg mutex locks or not by setting the bThreadSafe flag.
+		SignalBase(bool bThreadSafe = false,const char* name = NO_NAME);
 	
-		//needs to remove all slots
-		virtual ~CSignalBase();
+		///needs to remove all slots
+		virtual ~SignalBase();
 
 		///get the signals name.
 		std::string name()const;
 
-		///Add a slot
-		void add(CSlotBase *slot);
+		///Add a slot to this signal. 
+		///@param slot  The slot you want to add to this signal. Care that the template definition matches this one.
+		///@param priority   Optionally assign a priortiy to the slot. Priority zero is normal. Higher fires earlier.
+		///@param active   Optionally deactivate the slot on creation by setting active to false.
+		void add(SlotBase *slot, int priority = 0, bool active = true);
 
-		///Add a slot to fire once and be removed.
-		void addOnce(CSlotBase *slot);
+		///Add a slot to this signal to fire once and be removed. 
+		///@param slot  The slot you want to add to this signal. Care that the template definition matches this one.
+		///@param priority   Optionally assign a priortiy to the slot. Priority zero is normal. Higher fires earlier.
+		///@param active   Optionally deactivate the slot on creation by setting active to false.
+		void addOnce(SlotBase *slot, int priority = 0, bool active = true);
 
-		///Remove a slot
-		void remove(CSlotBase *slot);
+		///Remove a single slot from this signal. Priority, active state and fire_once state are not preserved.
+		void remove(SlotBase *slot);
 
-		///Remove all slots
+		///Remove all slots from this signal. Priority, active state and fire_once state are not preserved.
 		void removeAll();
 
 		///return how many slots are connected
 		int numSlots();
-
-		///Dispatches the signal to all slots
-		//void dispatch(Args...);
+		
+		///return true is this signal contains a slot
+		bool hasSlot(SlotBase *slot);
 
 	public:
 		//Hide and disable/default all constructors and destructors unless specifically overridden
 		//this is a mnemonic to force me to think about things. if overridden they are commented
-		//CSignalBase() = default;
-		//~CSignalBase() = default;
-		CSignalBase(const CSignalBase& rhs) = delete;
-		CSignalBase& operator=(const CSignalBase& rhs) = delete;
-		CSignalBase(CSignalBase&& other) = delete;
-		CSignalBase& operator=(CSignalBase&& other) = delete;
+		//SignalBase() = default;
+		//~SignalBase() = default;
+		SignalBase(const SignalBase& rhs) = delete;
+		SignalBase& operator=(const SignalBase& rhs) = delete;
+		SignalBase(SignalBase&& other) = delete;
+		SignalBase& operator=(SignalBase&& other) = delete;
 	};
+
 };

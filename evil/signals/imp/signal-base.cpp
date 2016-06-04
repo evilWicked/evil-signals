@@ -2,57 +2,48 @@
 
 #include <mutex>
 
+#include <assert.h>
+#include <algorithm>
 #include "slot-base.h"
 #include "signal-base.h"
 #include "../../thread/read-write-lock.h"
 
 
 namespace evil {
-
-
-	//--------------------------------------------------------------------------
-	//							Atomic API
-	//
-	//  Atomic functions are not atomic in the threads sense even though some of them 
-	//  manipulate atomic types. They are atomic in the sense that they act on one thing.
-	//  Done this way so that we can minimise locking. 
-	//
-	//--------------------------------------------------------------------------
-
 	
 
-	bool CSignalBase::atomicHasSlot(CSlotBase * slot) {
-		CReadWriteLock rwLock(&mRWmutex, CReadWriteLock::READ);
+	void SignalBase::rawRemoveSlot(SlotBase* slot) {
+		mlistSlots.remove(slot);
+	};
 
-		for (auto it = mlistSlots.begin(); it != mlistSlots.end(); it++) {
-			if (*it == slot) {
-				return true;
-			}
+
+	void SignalBase::rawRemoveAll() {
+
+		for(auto& x : mlistSlots) {
+			x->releaseSignal();
 		}
-		return false;
-	}
+		mlistSlots.clear();
+	};
 
 
-	void CSignalBase::atomicAddSlot(CSlotBase *slot) {
-
-		CReadWriteLock rwLock(&mRWmutex, CReadWriteLock::WRITE);
+	void SignalBase::rawInsertSlot(SlotBase *slot) {
 
 		//gets called once a slot
-		if (mlistSlots.empty()) {
+		if(mlistSlots.empty()) {
 			mlistSlots.push_front(slot);
 			return;
 		}
 
-		//most likely situation
-		CSlotBase *b = mlistSlots.back();
-		if (slot->priority() <= b->priority()) {
+		//most likely situation - no change to priority so add at the back
+		SlotBase *b = mlistSlots.back();
+		if(slot->miPriority <= b->miPriority) {
 			mlistSlots.push_back(slot);
 			return;
 		}
 
 		//no easy fix so insert it ahead of the first lower priority slot
-		for (auto it = mlistSlots.begin(); it != mlistSlots.end(); ++it) {
-			if ((*it)->priority() < slot->priority()) {
+		for(auto it = mlistSlots.begin(); it != mlistSlots.end(); ++it) {
+			if((*it)->miPriority < slot->miPriority) {
 				mlistSlots.insert(it, slot);
 				return;
 			}
@@ -60,201 +51,138 @@ namespace evil {
 
 		//couldn't find a slot of lower priority so add it to the end
 		//should never get here....
-		mlistSlots.push_back(slot);
-
-		return;
+		assert(0);
 	};
 
-	void CSignalBase::atomicRemoveSlot(CSlotBase* slot) {
-		CReadWriteLock rwLock(&mRWmutex, CReadWriteLock::WRITE);
-		mlistSlots.remove(slot);
-	};
+	void SignalBase::removeCompletedSlots() {
 
-	void CSignalBase::atomicClear() {
-		CReadWriteLock rwLock(&mRWmutex, CReadWriteLock::WRITE);
-		mlistSlots.clear();
-	};
+		if(mbThreadSafe) {
+			ReadWriteLock lock(&mRWMutex, ReadWriteLock::WRITE);
 
-
-	//--------------------------------------------------------------------------
-	//							Process API
-	//
-	// We are bundling different groups of atomic operations into processes. For
-	// example check something exists and if not then add it is two atomic operations
-	// in which the lock will need to be on the process level.
-	//
-	//--------------------------------------------------------------------------
-
-
-	void CSignalBase::processAdd(CSlotBase* slot) {
-	
-		//is the slot connected to us already?
-		if (!atomicHasSlot(slot)) {
-			atomicAddSlot(slot);
-		}
-
-		//so now the slot is listed by us
-
-		//it should not be connected to anything except nothing or us but lets be overly cautious
-		//and assume the most recent call is what the programmer wanted and they perhaps have 
-		//not disconnected. Perhaps they have moved the slot to a different signal...
-
-		//is the slot already connected back to us?
-		if (slot->friendGetSignal() == this) return;//then done
-
-		//its not plugged into us. is the slot plugged into something else?
-		if (slot->friendGetSignal() != 0) {
-			slot->friendDisconnect();
-		}
-
-		//so now the slot is not connected to anything
-		//so connect up to us
-		slot->friendConnect(this);
-	}
-
-	void CSignalBase::processAddOnce(CSlotBase* slot) {
-		slot->friendSetFireOnce(true);
-		processAdd(slot);
-	}
-
-	void CSignalBase::processRemove(CSlotBase* slot) {
-
-		//make sure we don't have a reference to the slot
-		if (atomicHasSlot(slot)) {
-			atomicRemoveSlot(slot);
-		}
-		//so now we know the slot is not listed by us
-
-		if (slot->friendGetSignal() != this) {
-			//then either it is null or connected to another signal somehow - someone has connected without
-			//disconecting or some such. in any case we dont want to mess with it, so we are done.
-			return;
-		}
-
-		//this signal is connected to us so disconnect it
-		slot->friendDisconnect();
-	}
-
-
-	void CSignalBase::processRemoveAll() {
-
-
-		{	//create some scope
-			CReadWriteLock rwLock(&mRWmutex, CReadWriteLock::READ);
-
-			type_slot_list_citer it;
-			for (it = mlistSlots.begin(); it != mlistSlots.end(); ++it) {
-				(*it)->friendDisconnect();
-			}
-
-		}
-		
-		atomicClear();
-	}
-
-
-	void CSignalBase::processSortSlots() {
-
-		CReadWriteLock rwLock(&mRWmutex, CReadWriteLock::WRITE);
-
-		mlistSlots.sort([](CSlotBase *a, CSlotBase *b) {return a->priority() > b->priority(); });
-
-	}
-
-
-	/*
-		void CSignalBase::processDispatch() {
-			//if we are already changing -> block
-			std::lock_guard<std::mutex> changeLock(mChangeMutex);
-			//if we are dispatching -> block changes
-			evil::CPassLock dispatchLock(&mDispatchMutex, evil::CPassLock::ALLOW);
-
-			for (auto it = mlistSlots.begin(); it != mlistSlots.end(); it++) {
-				CSlot *slot = *it;
-
-				if (slot->active() && slot->hasFunction()) {
-					slot->friendTriggerSlot(Args..);
+			type_slot_list_iter it = mlistSlots.begin();
+			while(it != mlistSlots.end()) {
+				std::lock_guard<std::mutex> slot_lock((*it)->mMutex);
+				if((*it)->mbFireOnceCompleted) {
+					(*it)->mbFireOnceCompleted = false;
+					(*it)->mbActive = false;
+					(*it)->mpcSignal = 0;
+					it = mlistSlots.erase(it);
+				} else {
+					++it;
 				}
 			}
 
+		} else {
+
+			type_slot_list_iter it = mlistSlots.begin();
+			while(it != mlistSlots.end()) {
+				if((*it)->mbFireOnceCompleted) {
+					(*it)->mbFireOnceCompleted = false;
+					(*it)->mbActive = false;
+					(*it)->mpcSignal = 0;
+					it = mlistSlots.erase(it);
+				} else {
+					++it;
+				}
+			}
 		}
-	*/
+	}
 
-	//--------------------------------------------------------------------------
-	//							Friend API
-	// 
-	// The friend api is to conceptually separate internal functions called by 
-	// slots on signals and vice versa as part of end to end processes that 
-	// need to interact with both objects.
-	//
-	//--------------------------------------------------------------------------
+	void SignalBase::addSlot(SlotBase *slot, bool fire_once, int priority, bool active) {
 
-	//functions only required by the slot class
-	void CSignalBase::friendAdd(CSlotBase* slot) { 
-		processAdd(slot); 
+	
+		assert(slot->mpcSignal == NULL && "Signal already has a slot");
+
+		if(mbThreadSafe) {
+			ReadWriteLock lock(&mRWMutex, ReadWriteLock::WRITE);
+			slot->connectSignal(this, fire_once, priority, active);
+			rawInsertSlot(slot);
+		} else {
+			slot->connectSignal(this, fire_once, priority, active);
+			rawInsertSlot(slot);
+		}
 	};
 
-	void CSignalBase::friendAddOnce(CSlotBase* slot) {
-		processAddOnce(slot); 
-	};
 
-	void CSignalBase::friendRemove(CSlotBase* slot) {
-		processRemove(slot); 
-	};
+	//used to get around the children of a friend aren't friends rule in templated derived classes
+	std::mutex& SignalBase::slotMutex(SlotBase *slot) {
+		return slot->mMutex;
+	}
 
-	void CSignalBase::friendSortSlots() { 
-		processSortSlots();
-	};
-
-	bool CSignalBase::friendHasSlot(CSlotBase* slot) {
-		return atomicHasSlot(slot); 
-	};
 
 	//--------------------------------------------------------------------------
 	//							Public API
 	//
 	//	This is the bit that users see - we want this as small as possible. The less
-	//  they can do the less can go wrong
+	//  they can do the less can go wrong. There are some not so nice subtleties with
+	//  multithread locking and we want to steer as much as possible to the signal so 
+	//  that we dont need to consider two alternative paths to change the same thing
 	//
 	//--------------------------------------------------------------------------
 
-	CSignalBase::CSignalBase(const char* name /*= NO_NAME */) :mstrName(name) {
-
+	SignalBase::SignalBase(bool bThreadSafe /*= false*/, const char* name /*= NO_NAME */)
+		:mbThreadSafe{ bThreadSafe }, mstrName(name) {
 	};
 
 	///Destructor. Also handles informing slots that it has been deleted
-	CSignalBase::~CSignalBase() {
-		processRemoveAll();
+	SignalBase::~SignalBase() {
+		rawRemoveAll();
 	};
 
 	///get the signals name.
-	std::string CSignalBase::name()const{
-		return mstrName; 
+	std::string SignalBase::name()const {
+		return mstrName;
 	};
 
 
-	void CSignalBase::add(CSlotBase *slot) { 
-		processAdd(slot); 
+	void SignalBase::add(SlotBase *slot, int priority/*= 0*/, bool active /*= true*/) {
+		addSlot(slot, false, priority, active);
 	};
 
-	///Add a slot to fire once and be removed.
-	void CSignalBase::addOnce(CSlotBase *slot) { 
-		processAddOnce(slot);
+	void SignalBase::addOnce(SlotBase *slot, int priority/* = 0 */, bool active /*= true*/) {
+		addSlot(slot, false, priority,active);
 	};
 
-	///Remove a slot
-	void CSignalBase::remove(CSlotBase *slot) { 
-		processRemove(slot); 
+	void SignalBase::remove(SlotBase *slot) {
+
+		if(mbThreadSafe) {
+			ReadWriteLock lock(&mRWMutex, ReadWriteLock::WRITE);
+			rawRemoveSlot(slot);
+			slot->releaseSignal();
+		} else {
+			rawRemoveSlot(slot);
+			slot->releaseSignal();
+		}
 	};
 
-	///Remove all slots
-	void CSignalBase::removeAll() {
-		processRemoveAll(); 
+	void SignalBase::removeAll() {
+
+		if(mbThreadSafe) {
+			ReadWriteLock lock(&mRWMutex, ReadWriteLock::WRITE);
+			rawRemoveAll();
+		}else{
+			rawRemoveAll();
+		}
 	};
 
-	///return how many slots are connected
-	int CSignalBase::numSlots() { 
-		return (int)mlistSlots.size();
+	bool SignalBase::hasSlot(SlotBase *slot) {
+
+		if(mbThreadSafe) {
+			ReadWriteLock lock(&mRWMutex, ReadWriteLock::READ);
+			return std::find(mlistSlots.begin(), mlistSlots.end(), slot) != mlistSlots.end();
+		}else{
+			return std::find(mlistSlots.begin(), mlistSlots.end(), slot) != mlistSlots.end();
+		}
+	};
+
+	int SignalBase::numSlots() {
+
+		if(mbThreadSafe) {
+			ReadWriteLock lock(&mRWMutex, ReadWriteLock::READ);
+			return (int)mlistSlots.size();
+		} else {
+			return (int)mlistSlots.size();
+		}
 	};
 }
 

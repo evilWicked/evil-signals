@@ -8,28 +8,28 @@
 namespace evil {
 
 template<typename T>
-CDataTable<T>::CDataTable(int cols) :miCols(cols) {
+TestDataTable<T>::TestDataTable(int cols) :miCols(cols) {
 	miColIndex = 0;
 	miRowIndex = 0;
 };
 
 template<typename T>	
-int CDataTable<T>::Cols() { return miCols; }
+int TestDataTable<T>::Cols() { return miCols; }
 	
 template<typename T>
-int CDataTable<T>::Rows() { return (int)mTable.size(); }
+int TestDataTable<T>::Rows() { return (int)mTable.size(); }
 
 	
 		///inserts a new row of T
 template<typename T>
-void CDataTable<T>::insertRow(){
+void TestDataTable<T>::insertRow(){
 	display_row r(miCols);
 	mTable.push_back(r);
 }
 
 
 template<typename T>
-int CDataTable<T>::insertCell(T s) {
+int TestDataTable<T>::insertCell(T s) {
 	if (miColIndex < miCols) {
 		mTable[miRowIndex][miColIndex] = s;
 	}
@@ -39,7 +39,7 @@ int CDataTable<T>::insertCell(T s) {
 
 		
 template<typename T>
-int CDataTable<T>::nextCol() {
+int TestDataTable<T>::nextCol() {
 	miColIndex++;
 	if (miColIndex >= miCols) {
 		miColIndex = 0;
@@ -49,7 +49,7 @@ int CDataTable<T>::nextCol() {
 
 
 template<typename T>
-int CDataTable<T>::nextRow() {
+int TestDataTable<T>::nextRow() {
 	if (miRowIndex < mTable.size()) {
 		miRowIndex++;
 		miColIndex = 0;
@@ -58,29 +58,29 @@ int CDataTable<T>::nextRow() {
 }
 
 template<typename T>
-void CDataTable<T>::newRow() {
+void TestDataTable<T>::newRow() {
 	insertRow();		
 }
 
 template<typename T>
-void CDataTable<T>::reset() {
+void TestDataTable<T>::reset() {
 	miColIndex = 0;
 	miRowIndex = 0;
 }
 
 template<typename T>
-T CDataTable<T>::get(int row, int col) {
+T TestDataTable<T>::get(int row, int col) {
 	//do we need to check bounds??
 	return mTable[row][col];
 }
 
 template<typename T>
-void CDataTable<T>::set(int row, int col, T s) {
+void TestDataTable<T>::set(int row, int col, T s) {
 	mTable[row][col] = s;
 }
 
 template<typename T>
-void CDataTable<T>::clear() {
+void TestDataTable<T>::clear() {
 	mTable.clear();
 	reset();
 }

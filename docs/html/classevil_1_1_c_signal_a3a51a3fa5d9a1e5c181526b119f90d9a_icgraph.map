@@ -1,6 +1,0 @@
-<map id="evil::CSignal::remove" name="evil::CSignal::remove">
-<area shape="rect" id="node2" href="$classevil_1_1_c_slot.html#a0fc93f50a9d38cb448b679d360ff9ef8" title="Disconnect this slot from the owning signal. " alt="" coords="196,31,347,57"/>
-<area shape="rect" id="node3" href="$classevil_1_1_c_signal.html#a6eca46188f30dde96aa43987ab830210" title="Add a slot to a signal. " alt="" coords="397,5,520,32"/>
-<area shape="rect" id="node5" href="$classevil_1_1_c_slot.html#a5878593a68de5a955b41a39a00675079" title="evil::CSlot::~CSlot" alt="" coords="395,56,523,83"/>
-<area shape="rect" id="node4" href="$classevil_1_1_c_slot.html#a3a434cdeb2058a8505130b20deb0075b" title="Connect this slot to a signal. " alt="" coords="571,5,705,32"/>
-</map>
