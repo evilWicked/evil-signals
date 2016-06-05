@@ -3,7 +3,12 @@
 #ifdef _WIN32
 
 #define EVIL_WIN
-#include <vld.h> 
+
+//visual leak detector. 
+//If you enable this note that visual leak detector sometimes reports some false
+//positives due to top level objects not being deleted after the leak detection code 
+//#include <vld.h> 
+
 #include <windows.h>
 
 #elif __APPLE__
@@ -116,49 +121,45 @@ void testFunction3(int i, double x, std::string &str) {
 
 int main(int argc, char* argv[])
 {
-	//create some inner scope so that the leak detector does not report top level objects
-	//as leaking. It will force the destruction before main exists - not needed for normal code.
-	{
+	
+	evil::TestHarness Tests("Evil Signals Testing");
 
-		evil::TestHarness Tests("Evil Signals Testing");
+	//include our test cases - they are just lambdas added by
+	//cTests.add("some name", [](evil::CTestHarness *th,std::string& result)mutable->bool 
+	//							{do something return pass/fail})
 
-		//include our test cases - they are just lambdas added by
-		//cTests.add("some name", [](evil::CTestHarness *th,std::string& result)mutable->bool 
-		//							{do something return pass/fail})
+	#include "tests/tc-basic-creation.h"
+	#include "tests/tc-thread-basic-creation.h"
+		
+	#include "tests/tc-destructors.h"
+	#include "tests/tc-thread-destructors.h"
+		
+	#include "tests/tc-multiple-connections.h"
+	#include "tests/tc-thread-multiple-connections.h"
+		
+	#include "tests/tc-disconnect-all.h"
+	#include "tests/tc-thread-disconnect-all.h"
+		
+	#include "tests/tc-basic-callback.h"
+	#include "tests/tc-thread-basic-callback.h"
+		
+	#include "tests/tc-class-callback.h"
+	#include "tests/tc-thread-class-callback.h"
+		
+	#include "tests/tc-fire-once.h"
+	#include "tests/tc-thread-fire-once.h"
+		
+	#include "tests/tc-deactivate.h"
+	#include "tests/tc-thread-deactivate.h" 
 
-		#include "tests/tc-basic-creation.h"
-		#include "tests/tc-thread-basic-creation.h"
+	#include "tests/tc-stress-dispatch.h"
+	#include "tests/tc-thread-stress-dispatch.h"
 		
-		#include "tests/tc-destructors.h"
-		#include "tests/tc-thread-destructors.h"
-		
-		#include "tests/tc-multiple-connections.h"
-		#include "tests/tc-thread-multiple-connections.h"
-		
-		#include "tests/tc-disconnect-all.h"
-		#include "tests/tc-thread-disconnect-all.h"
-		
-		#include "tests/tc-basic-callback.h"
-		#include "tests/tc-thread-basic-callback.h"
-		
-		#include "tests/tc-class-callback.h"
-		#include "tests/tc-thread-class-callback.h"
-		
-		#include "tests/tc-fire-once.h"
-		#include "tests/tc-thread-fire-once.h"
-		
-		#include "tests/tc-deactivate.h"
-		#include "tests/tc-thread-deactivate.h" 
-
-		#include "tests/tc-stress-dispatch.h"
-		#include "tests/tc-thread-stress-dispatch.h"
-		
-		#include "tests/tc-stress-modify.h"
-		#include "tests/tc-thread-stress-modify.h"
+	#include "tests/tc-stress-modify.h"
+	#include "tests/tc-thread-stress-modify.h"
 				
-		Tests.run();
-	}
-
+	Tests.run();
+	
 
 std::cout << "Press return to exit";
 std::getchar();
