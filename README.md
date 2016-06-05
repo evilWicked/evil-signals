@@ -4,6 +4,18 @@ evil signals
 About
 -----
 
+evil signals provides a simple lightweight C++ threadsafe signals and slots implementation. It contains a *non* threadsafe pair 
+evil::Signal<...Args> paired with evil::Slot<...Args> intended for use within a thread. This does not have the overhead of 
+mutex locking and is faster.  The threadsafe pair evil::ThreadSignal<...Args> paired with evil::ThreadSlot<...Args> utilises
+a Read Write Lock that enables parallel dispatches together with sequential modifications. 
+
+It is intended to be used as a source only distribution relying upon C++11 std libraries.
+
+Documentation
+-------------
+
+The Doxygen documentation can be found on github at http://evilwicked.github.io/evil-signals/index.html.  Alternatively you can build
+your own using the doxyfile in the docs/ directory.
 
 Installation
 ------------
