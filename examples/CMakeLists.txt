@@ -16,10 +16,25 @@ evil_setup_environment()
 
 #grab a hook to the repo root directory
 get_filename_component(EVIL_REPO_DIR "${CMAKE_SOURCE_DIR}/.." ABSOLUTE)
+set(EVIL_INCLUDE_PARENT ${EVIL_REPO_DIR})
 
+## LOCATION OF THE EVIL INCLUDE DIRECTORY  
 
-#the evil dir where our actual source is 
-set(EVIL_DIR ${EVIL_REPO_DIR}/evil)
+## THIS IS PROBABLY WHAT YOU ARE LOOKING FOR
+
+#the EVIL_REPO_DIR is where the source originally was installed.
+#If you have followed the instructions then you have probably moved it.
+
+#if so then you will need to adjust this so that EVIL_INCLUDE_PARENT points
+#to the directory above the new location of the evil dir.  This will be used
+#to set the visual studio include paths,
+
+set(EVIL_INCLUDE_PARENT ${EVIL_REPO_DIR})
+
+#eg on windows: set(EVIL_INCLUDE_PARENT "C:\\Users\\yourname\\Documents\\some\\path\\")
+
+set(EVIL_DIR ${EVIL_INCLUDE_PARENT}/evil)
+
 
 #the various libraries
 set(EVIL_SIGNALS_DIR ${EVIL_DIR}/signals)
@@ -67,13 +82,7 @@ endif()
 
 
 #include paths - follow our own instructions and refer to the repo root
-include_directories(${EVIL_REPO_DIR})
-
-
-#include_directories(${EVIL_SIGNALS_DIR})
-#include_directories(${EVIL_THREAD_DIR})
-#include_directories(${EVIL_UTIL_DIR})
-#include_directories(${EVIL_TEST_DIR})
+include_directories(${EVIL_INCLUDE_PARENT})
 
 
 #grab the various source and headers
