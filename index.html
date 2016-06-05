@@ -88,6 +88,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h2>About </h2>
+<p>evil signals provides a simple lightweight C++ threadsafe signals and slots implementation. It contains a <em>non</em> threadsafe pair evil::Signal&lt;...Args&gt; paired with evil::Slot&lt;...Args&gt; intended for use within a thread. This does not have the overhead of mutex locking and is faster. The threadsafe pair evil::ThreadSignal&lt;...Args&gt; paired with evil::ThreadSlot&lt;...Args&gt; utilises a Read Write Lock that enables parallel dispatches together with sequential modifications.</p>
+<p>It is intended to be used as a source only distribution relying upon C++11 std libraries.</p>
+<h2>Documentation </h2>
+<p>The Doxygen documentation can be found on github at <a href="http://evilwicked.github.io/evil-signals/index.html">http://evilwicked.github.io/evil-signals/index.html</a>. Alternatively you can build your own using the doxyfile in the docs/ directory.</p>
 <h2>Installation </h2>
 <p>evil signals is installed by simply including the source. The simplest way to do this is to copy the whole <code>evil-signals/</code> directory somewhere into your include path. Alternatively point your include path to wherever you have cloned the repo.</p>
 <p>include header files as usual using </p><pre class="fragment">#include "evil/signals/signals.h"
