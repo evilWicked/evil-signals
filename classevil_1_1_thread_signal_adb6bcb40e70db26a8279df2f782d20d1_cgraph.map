@@ -1,0 +1,7 @@
+<map id="evil::ThreadSignal::dispatch" name="evil::ThreadSignal::dispatch">
+<area shape="rect" id="node2" href="$classevil_1_1_signal_base.html#a52ded547201b058d3999c2a8ac2553eb" title="evil::SignalBase::slotMutex" alt="" coords="176,5,355,32"/>
+<area shape="rect" id="node3" href="$classevil_1_1_signal_base.html#a98cb9f2da303f70699cb54be8274133e" title="used internally to remove fireOnce slots " alt="" coords="184,57,347,98"/>
+<area shape="rect" id="node4" href="$classevil_1_1_thread_signal.html#ae7e0862496d2bf6a64610ce9579a15aa" title="evil::ThreadSignal\l::~ThreadSignal" alt="" coords="204,122,327,163"/>
+<area shape="rect" id="node5" href="$classevil_1_1_thread_signal.html#a27cbeef43a778d32a415379f930ef7d9" title="evil::ThreadSignal\l::ThreadSignal" alt="" coords="204,187,327,229"/>
+<area shape="rect" id="node6" href="$classevil_1_1_thread_signal.html#a8e9f9c50acad0704969ca0dcdc15e8fa" title="evil::ThreadSignal\l::operator=" alt="" coords="204,253,327,294"/>
+</map>

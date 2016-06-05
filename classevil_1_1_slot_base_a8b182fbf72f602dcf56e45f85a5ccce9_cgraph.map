@@ -1,0 +1,5 @@
+<map id="evil::SlotBase::~SlotBase" name="evil::SlotBase::~SlotBase">
+<area shape="rect" id="node2" href="$classevil_1_1_signal_base.html#a2702a2af693c78c8def7d00c40b86c51" title="Remove a single slot from this signal. Priority, active state and fire_once state are not preserved..." alt="" coords="224,31,387,57"/>
+<area shape="rect" id="node3" href="$classevil_1_1_signal_base.html#a17548628d987cf06a9268eeafbb6d0d7" title="evil::SignalBase::rawRemoveSlot" alt="" coords="435,5,645,32"/>
+<area shape="rect" id="node4" href="$classevil_1_1_slot_base.html#a8cd7ea79b4d7f3bd52253693b7fc724b" title="evil::SlotBase::releaseSignal" alt="" coords="447,56,633,83"/>
+</map>

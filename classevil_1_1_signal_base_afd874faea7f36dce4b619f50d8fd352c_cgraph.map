@@ -1,0 +1,5 @@
+<map id="evil::SignalBase::addSlot" name="evil::SignalBase::addSlot">
+<area shape="rect" id="node2" href="$classevil_1_1_slot_base.html#a933c938d390e31d9d55ce20d6885a82f" title="evil::SlotBase::connectSignal" alt="" coords="223,5,414,32"/>
+<area shape="rect" id="node4" href="$classevil_1_1_signal_base.html#abf99e4ab934ce0819bf43a6ffdf1b1a8" title="evil::SignalBase::rawInsertSlot" alt="" coords="220,56,417,83"/>
+<area shape="rect" id="node3" href="$classevil_1_1_slot_base.html#a38f8a55ca18122554084fc0fbe04c5b4" title="evil::SlotBase::signal" alt="" coords="465,5,608,32"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="evil/thread/read&#45;write&#45;mutex.h" name="evil/thread/read&#45;write&#45;mutex.h">
+<area shape="rect" id="node2" href="$signal-base_8h.html" title="evil/signals/imp/signal\l&#45;base.h" alt="" coords="301,95,449,136"/>
+<area shape="rect" id="node11" href="$read-write-lock_8h.html" title="evil/thread/read&#45;write\l&#45;lock.h" alt="" coords="541,95,681,136"/>
+<area shape="rect" id="node3" href="$slot-base_8h.html" title="evil/signals/imp/slot\l&#45;base.h" alt="" coords="202,184,337,225"/>
+<area shape="rect" id="node4" href="$signal-base_8cpp.html" title="evil/signals/imp/signal\l&#45;base.cpp" alt="" coords="459,273,607,315"/>
+<area shape="rect" id="node6" href="$slot-base_8cpp.html" title="evil/signals/imp/slot\l&#45;base.cpp" alt="" coords="155,273,290,315"/>
+<area shape="rect" id="node7" href="$slot_8h.html" title="evil/signals/slot.h" alt="" coords="314,281,435,307"/>
+<area shape="rect" id="node8" href="$thread-slot_8h.html" title="evil/signals/thread\l&#45;slot.h" alt="" coords="5,273,131,315"/>
+<area shape="rect" id="node9" href="$signal_8h.html" title="evil/signals/signal.h" alt="" coords="613,191,747,218"/>
+<area shape="rect" id="node10" href="$thread-signal_8h.html" title="evil/signals/thread\l&#45;signal.h" alt="" coords="463,184,588,225"/>
+<area shape="rect" id="node5" href="$signals_2evil-wrapper_8cpp.html" title="evil/signals/evil&#45;wrapper.cpp" alt="" coords="287,363,468,389"/>
+</map>

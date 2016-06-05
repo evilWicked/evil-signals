@@ -1,0 +1,4 @@
+<map id="evil::ThreadQueue::invalidate" name="evil::ThreadQueue::invalidate">
+<area shape="rect" id="node2" href="$classevil_1_1_thread_pool_1_1_task_future.html#ad7b7b1c372c997c9ba7379bc974d3a36" title="evil::ThreadPool::TaskFuture::get" alt="" coords="187,5,399,32"/>
+<area shape="rect" id="node3" href="$classevil_1_1_thread_queue.html#a87cc8416c960fac2fac09c0fcb46c768" title="evil::ThreadQueue\&lt;\l std::unique_ptr\&lt; TaskBase\l \&gt; \&gt;::~ThreadQueue" alt="" coords="201,56,384,112"/>
+</map>

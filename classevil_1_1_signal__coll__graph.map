@@ -1,0 +1,4 @@
+<map id="evil::Signal&lt; Args &gt;" name="evil::Signal&lt; Args &gt;">
+<area shape="rect" id="node2" href="$classevil_1_1_signal_base.html" title="the base class used by both the evil::Signal and evil::ThreadSignal class. " alt="" coords="21,95,135,121"/>
+<area shape="rect" id="node3" href="$classevil_1_1_read_write_mutex.html" title="The internals of the read write lock &#45; not really a mutex although used like one. ..." alt="" coords="5,5,151,32"/>
+</map>

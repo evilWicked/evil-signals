@@ -1,0 +1,4 @@
+<map id="evil::SignalBase::removeCompletedSlots" name="evil::SignalBase::removeCompletedSlots">
+<area shape="rect" id="node2" href="$classevil_1_1_signal.html#a2a043a769019cf449388b750d550884c" title="dispatch a signal that accepts the arguments used in the template instantiation " alt="" coords="216,5,357,32"/>
+<area shape="rect" id="node3" href="$classevil_1_1_thread_signal.html#adb6bcb40e70db26a8279df2f782d20d1" title="evil::ThreadSignal\l::dispatch" alt="" coords="225,57,348,98"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="evil::Signal::dispatch" name="evil::Signal::dispatch">
+<area shape="rect" id="node2" href="$classevil_1_1_slot.html#a636ffd4569877cba8c070deecbc66a2d" title="evil::Slot::triggerSlot" alt="" coords="207,5,345,32"/>
+<area shape="rect" id="node3" href="$classevil_1_1_signal_base.html#a98cb9f2da303f70699cb54be8274133e" title="used internally to remove fireOnce slots " alt="" coords="195,57,357,98"/>
+<area shape="rect" id="node4" href="$classevil_1_1_signal.html#aca062e647fc06f1fbf70d9b75842ad09" title="evil::Signal::~Signal" alt="" coords="208,123,344,149"/>
+<area shape="rect" id="node5" href="$classevil_1_1_signal.html#a441758469509a603e19c6545d5d3906a" title="You can also optionally give the signal a name. It is not used internally but may be useful..." alt="" coords="212,173,340,200"/>
+<area shape="rect" id="node6" href="$classevil_1_1_signal.html#a936358f403518649317704060d2c3bf0" title="evil::Signal::operator=" alt="" coords="203,224,349,251"/>
+</map>

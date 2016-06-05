@@ -1,0 +1,4 @@
+<map id="evil::SignalBase::rawRemoveAll" name="evil::SignalBase::rawRemoveAll">
+<area shape="rect" id="node2" href="$classevil_1_1_signal_base.html#a2b7473f70375454cb75949a518077aa8" title="needs to remove all slots " alt="" coords="284,5,407,47"/>
+<area shape="rect" id="node3" href="$classevil_1_1_signal_base.html#a08d0de94e03ef6e9c68c8ee9ea0c58b1" title="Remove all slots from this signal. Priority, active state and fire_once state are not preserved..." alt="" coords="256,71,435,98"/>
+</map>

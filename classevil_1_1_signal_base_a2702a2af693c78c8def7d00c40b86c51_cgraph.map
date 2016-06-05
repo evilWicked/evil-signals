@@ -1,0 +1,4 @@
+<map id="evil::SignalBase::remove" name="evil::SignalBase::remove">
+<area shape="rect" id="node2" href="$classevil_1_1_signal_base.html#a17548628d987cf06a9268eeafbb6d0d7" title="evil::SignalBase::rawRemoveSlot" alt="" coords="216,5,427,32"/>
+<area shape="rect" id="node3" href="$classevil_1_1_slot_base.html#a8cd7ea79b4d7f3bd52253693b7fc724b" title="evil::SlotBase::releaseSignal" alt="" coords="228,56,415,83"/>
+</map>

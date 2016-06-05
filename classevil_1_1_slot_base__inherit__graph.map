@@ -1,0 +1,4 @@
+<map id="evil::SlotBase" name="evil::SlotBase">
+<area shape="rect" id="node2" href="$classevil_1_1_slot.html" title="The single threaded specialisation of the SlotBase class. " alt="" coords="5,80,128,107"/>
+<area shape="rect" id="node3" href="$classevil_1_1_thread_slot.html" title="The thread safe specialisation of the underlying SlotBase class. " alt="" coords="153,80,314,107"/>
+</map>
