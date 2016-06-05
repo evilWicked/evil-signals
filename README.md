@@ -18,21 +18,29 @@ your own using the doxyfile in the docs/ directory.
 
 Installation
 ------------
-evil signals is installed by simply including the source. The simplest way to do this is to copy the whole `evil-signals/`  directory somewhere into your include path. Alternatively point your include path to wherever you have cloned the repo.
+evil signals is installed by simply including the source. The important directory is the evil/ directory underneath evil-signals. This contains all dependencies and is compatible with the structure of other evil libraries allowing them to coexist.  The simplest way to get things working is to copy (or move - not so good) the whole evil/ directory and all subdirectories from under `evil-signals/` to somewhere on your include path.  Your include path needs to be the directory above evil/ so we can avoid confusion with other headers such as signal.h
 
-include header files as usual using 
+<!--####If You Have Other Evil Libraries Installed 
+Then copy the content into the existing source directory. In the absence of C++ module management I am keeping all dependencies bundled together with the library that uses them - you probably don't want to play with git submodules.  I know I don't. This means that for example the evil/threads directory used in evil-signals is exactly the same code as evil/threads used in evil-loader.  *In other words you should only ever have one evil/ directory in your project.* -->
 
-    #include "evil/signals/signals.h"
-    #include "evil/signals/slots.h"
+Assuming the above; include header files as usual using 
+
+    #include "evil/signals/signal.h"
+    #include "evil/signals/slot.h"
 	
 To bring in the implementation (*.cpp) files simply   
 
     #include "evil/signals/wrapper.cpp"
 
-into a source file somewhere. You can give it its own file or include it into an existing files. Whatever
-feels best.  Take care to keep the directory structure under evil/ intact. This contains other code that is used by either signals itself or the examples.
+into a source file somewhere. You can give it its own file or include it into an existing files. Do whatever
+feels best.  Take care to keep the directory structure under evil/ intact. This contains other code that is used by either signals itself or the examples. In particular the read write lock that the multi threaded version depends upon lives here. 
 
+The threadsafe versions are included with 
 
+	#include "evil/signals/thread-signal.h"
+    #include "evil/signals/thread-slot.h"
+
+	
 Why not use CMake?  CMake is used in examples but not for the main code. CMake would require configuration and testing for each platform which if it doesn't work would generate issues. So no.
 
 Compiler Options
@@ -50,6 +58,11 @@ Examples
 The examples code can be built using CMake.  But alas I don't have a Mac or any of the plethora of Linux boxes that exist out there so they have only been run on Windows.
 
 Run CMake as usual. Point the CMake source dir to the `evil-signals/examples/` and the CMake build dir to `evil-signals/examples/build/` which is where your `evil-signals-examples.sln` will end up as well as a pile of CMake inspired debris.
+
+The examples assume that the evil directory has not been moved. If it has you will need to open up CMakeLists.txt adjust 
+EVIL_INCLUDE_PARENT to point to the directory above where you have placed the evil directory
+
+	set(EVIL_INCLUDE_PARENT "C:\\Users\\yourname\\Documents\\some\\path\\")
 
 
 Usage
