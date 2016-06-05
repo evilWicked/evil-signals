@@ -93,12 +93,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h2>Documentation </h2>
 <p>The Doxygen documentation can be found on github at <a href="http://evilwicked.github.io/evil-signals/index.html">http://evilwicked.github.io/evil-signals/index.html</a>. Alternatively you can build your own using the doxyfile in the docs/ directory.</p>
 <h2>Installation </h2>
-<p>evil signals is installed by simply including the source. The simplest way to do this is to copy the whole <code>evil-signals/</code> directory somewhere into your include path. Alternatively point your include path to wherever you have cloned the repo.</p>
-<p>include header files as usual using </p><pre class="fragment">#include "evil/signals/signals.h"
-#include "evil/signals/slots.h"
+<p>evil signals is installed by simply including the source. The important directory is the evil/ directory underneath evil-signals. This contains all dependencies and is compatible with the structure of other evil libraries allowing them to coexist. The simplest way to get things working is to copy (or move - not so good) the whole evil/ directory and all subdirectories from under <code>evil-signals/</code> to somewhere on your include path. Your include path needs to be the directory above evil/ so we can avoid confusion with other headers such as <a class="el" href="signal_8h.html">signal.h</a></p>
+<p>Assuming the above; include header files as usual using </p><pre class="fragment">#include "evil/signals/signal.h"
+#include "evil/signals/slot.h"
 </pre><p>To bring in the implementation (*.cpp) files simply </p><pre class="fragment">#include "evil/signals/wrapper.cpp"
-</pre><p>into a source file somewhere. You can give it its own file or include it into an existing files. Whatever feels best. Take care to keep the directory structure under evil/ intact. This contains other code that is used by either signals itself or the examples.</p>
-<p>Why not use CMake? CMake is used in examples but not for the main code. CMake would require configuration and testing for each platform which if it doesn't work would generate issues. So no.</p>
+</pre><p>into a source file somewhere. You can give it its own file or include it into an existing files. Do whatever feels best. Take care to keep the directory structure under evil/ intact. This contains other code that is used by either signals itself or the examples. In particular the read write lock that the multi threaded version depends upon lives here.</p>
+<p>The threadsafe versions are included with </p><pre class="fragment">#include "evil/signals/thread-signal.h"
+#include "evil/signals/thread-slot.h"
+</pre><p>Why not use CMake? CMake is used in examples but not for the main code. CMake would require configuration and testing for each platform which if it doesn't work would generate issues. So no.</p>
 <h2>Compiler Options </h2>
 <p>Nothing special. Just treat it as your own code and optimise to suit your own needs.</p>
 <h2>Dependencies </h2>
@@ -107,7 +109,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h2>Examples </h2>
 <p>The examples code can be built using CMake. But alas I don't have a Mac or any of the plethora of Linux boxes that exist out there so they have only been run on Windows.</p>
 <p>Run CMake as usual. Point the CMake source dir to the <code>evil-signals/examples/</code> and the CMake build dir to <code>evil-signals/examples/build/</code> which is where your <code>evil-signals-examples.sln</code> will end up as well as a pile of CMake inspired debris.</p>
-<h2>Usage </h2>
+<p>The examples assume that the evil directory has not been moved. If it has you will need to open up CMakeLists.txt adjust EVIL_INCLUDE_PARENT to point to the directory above where you have placed the evil directory </p><pre class="fragment">set(EVIL_INCLUDE_PARENT "C:\\Users\\yourname\\Documents\\some\\path\\")
+</pre><h2>Usage </h2>
 <p>Usage is fairly simple. Both the signal and the slot are templated to handle different arguments being passed between the signal and the slot when a signal is dispatched. </p><pre class="fragment">evil::Signal&lt;...Args&gt;
 evil::Slot&lt;...Args&gt;
 </pre><p>As an example if we want to use callbacks of the form </p><pre class="fragment">void foo(int i){...};
@@ -128,7 +131,7 @@ void foo(){}
 
 C c;
 
-slot.attach_class(&amp;c,foo);
+slot.attach_class(&amp;c,&amp;C::foo);
 </pre><h3>Connect the slot to the signal</h3>
 <p>To connect the slot to the signal you use add from the signal. </p><pre class="fragment">sig.add(&amp;slot)
 </pre><p>similarly to disconnect them you use remove. </p><pre class="fragment">sig.remove(&amp;slot)
