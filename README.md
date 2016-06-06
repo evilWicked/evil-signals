@@ -155,13 +155,17 @@ what you want. This means that if you define
 	evil::Slot<int&> slot2;
 
 	void foo(int &i){i++;}
+	
+	slot1.attach(foo);
+	slot2.attach(foo);
+	
 	sig.add(&slot1);
 	sig.add(&slot2);
 
 	int i=0;
 	sig.dispatch(i);
 
-i would now be now equal to 2 becuase it would be incremented with every call of the slot by the signal.
+i would now be now equal to 2 because it would be incremented with every call of the slot by the signal.
 
 Slots can be deactivated and reactivated.
 
