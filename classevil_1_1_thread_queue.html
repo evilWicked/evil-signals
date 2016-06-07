@@ -103,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>An implementation of a thread safe queue we are using for threading.  
+<p>An implementation of a thread safe queue we are using for the thread pool.  
  <a href="classevil_1_1_thread_queue.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>&gt;</code></p>
@@ -141,12 +141,11 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><h3>template&lt;typename T&gt;<br />
 class evil::ThreadQueue&lt; T &gt;</h3>
 
-<p>An implementation of a thread safe queue we are using for threading. </p>
-<p>Technically it can be usedfor anything else as well but we will leave the ambiguity in naming where it is.</p>
+<p>An implementation of a thread safe queue we are using for the thread pool. </p>
 <p>largely (99.99%) taken from <a href="http://roar11.com/2016/01/a-platform-independent-thread-pool-using-c14/">http://roar11.com/2016/01/a-platform-independent-thread-pool-using-c14/</a></p>
 <p>by WillP </p>
 
-<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00021">21</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
+<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00019">19</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a5653867a0f536ab402752bb8adf3ef1c"></a>
 <div class="memitem">
@@ -206,7 +205,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00031">31</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
+<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00029">29</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
 
 </div>
 </div>
@@ -288,7 +287,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Clear all items from the queue. </p>
 
-<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00093">93</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
+<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00091">91</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
 
 </div>
 </div>
@@ -317,7 +316,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Check whether or not the queue is empty. </p>
 
-<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00084">84</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
+<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00082">82</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
 
 </div>
 </div>
@@ -346,7 +345,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Invalidate the queue. Used to ensure no conditions are being waited on in waitPop when a thread or the application is trying to exit. The queue is invalid after calling this method and it is an error to continue using a queue after this method has been called. </p>
 
-<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00110">110</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
+<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00108">108</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -386,7 +385,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Returns whether or not this queue is valid. </p>
 
-<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00120">120</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
+<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00118">118</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
 
 </div>
 </div>
@@ -476,17 +475,17 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00035">35</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
+<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00033">33</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classevil_1_1_thread_queue_a0ba8f0f265393b79547dfe4c4ef0680f_icgraph.png" border="0" usemap="#classevil_1_1_thread_queue_a0ba8f0f265393b79547dfe4c4ef0680f_icgraph" alt=""/></div>
 <map name="classevil_1_1_thread_queue_a0ba8f0f265393b79547dfe4c4ef0680f_icgraph" id="classevil_1_1_thread_queue_a0ba8f0f265393b79547dfe4c4ef0680f_icgraph">
-<area shape="rect" id="node2" href="classevil_1_1_thread_pool.html#a520e6d58a1d2c2d288b5ea689045d6a4" title="evil::ThreadPool::calc" alt="" coords="215,5,360,32"/>
-<area shape="rect" id="node4" href="classevil_1_1_thread_pool.html#afd4107790de671ed3d57273d3644b36f" title="evil::ThreadPool::run" alt="" coords="218,56,357,83"/>
-<area shape="rect" id="node3" href="namespaceevil_1_1thread__pool.html#ad672834ea354a2becb4a5073143d75be" title="evil::thread_pool::calc" alt="" coords="408,5,555,32"/>
-<area shape="rect" id="node5" href="namespaceevil_1_1thread__pool.html#abae06a5836c7baa83a2f5abf715680b9" title="evil::thread_pool::run" alt="" coords="411,56,552,83"/>
+<area shape="rect" id="node2" href="classevil_1_1_thread_pool.html#aedb698db6a545c81e96d510db20b800f" title="evil::ThreadPool::run" alt="" coords="215,5,353,32"/>
+<area shape="rect" id="node4" href="classevil_1_1_thread_pool.html#a12cded9ccdce553179b3a818228f9f26" title="evil::ThreadPool::run\l_loose" alt="" coords="215,57,353,98"/>
+<area shape="rect" id="node3" href="namespaceevil_1_1thread__pool.html#a04881d9d06a6fec54ad760361e887bbf" title="evil::thread_pool::run" alt="" coords="401,5,543,32"/>
+<area shape="rect" id="node5" href="namespaceevil_1_1thread__pool.html#a4faf6ac57f08ccd6c781323d95e58290" title="evil::thread_pool::\lrun_loose" alt="" coords="411,57,533,98"/>
 </map>
 </div>
 </p>
@@ -518,7 +517,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Attempt to get the first value in the queue. Returns true if a value was successfully written to the out parameter, false otherwise. </p>
 
-<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00045">45</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
+<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00043">43</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
 
 </div>
 </div>
@@ -547,7 +546,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Get the first value in the queue. Will block until a value is available unless clear is called or the instance is destructed. Returns true if a value was successfully written to the out parameter, false otherwise. </p>
 
-<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00061">61</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
+<p>Definition at line <a class="el" href="thread-queue_8h_source.html#l00059">59</a> of file <a class="el" href="thread-queue_8h_source.html">thread-queue.h</a>.</p>
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>

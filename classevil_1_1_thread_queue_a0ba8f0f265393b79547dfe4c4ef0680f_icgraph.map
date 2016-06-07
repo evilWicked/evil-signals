@@ -1,6 +1,6 @@
 <map id="evil::ThreadQueue::push" name="evil::ThreadQueue::push">
-<area shape="rect" id="node2" href="$classevil_1_1_thread_pool.html#a520e6d58a1d2c2d288b5ea689045d6a4" title="evil::ThreadPool::calc" alt="" coords="215,5,360,32"/>
-<area shape="rect" id="node4" href="$classevil_1_1_thread_pool.html#afd4107790de671ed3d57273d3644b36f" title="evil::ThreadPool::run" alt="" coords="218,56,357,83"/>
-<area shape="rect" id="node3" href="$namespaceevil_1_1thread__pool.html#ad672834ea354a2becb4a5073143d75be" title="evil::thread_pool::calc" alt="" coords="408,5,555,32"/>
-<area shape="rect" id="node5" href="$namespaceevil_1_1thread__pool.html#abae06a5836c7baa83a2f5abf715680b9" title="evil::thread_pool::run" alt="" coords="411,56,552,83"/>
+<area shape="rect" id="node2" href="$classevil_1_1_thread_pool.html#aedb698db6a545c81e96d510db20b800f" title="evil::ThreadPool::run" alt="" coords="215,5,353,32"/>
+<area shape="rect" id="node4" href="$classevil_1_1_thread_pool.html#a12cded9ccdce553179b3a818228f9f26" title="evil::ThreadPool::run\l_loose" alt="" coords="215,57,353,98"/>
+<area shape="rect" id="node3" href="$namespaceevil_1_1thread__pool.html#a04881d9d06a6fec54ad760361e887bbf" title="evil::thread_pool::run" alt="" coords="401,5,543,32"/>
+<area shape="rect" id="node5" href="$namespaceevil_1_1thread__pool.html#a4faf6ac57f08ccd6c781323d95e58290" title="evil::thread_pool::\lrun_loose" alt="" coords="411,57,533,98"/>
 </map>

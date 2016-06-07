@@ -97,6 +97,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-types">Protected Types</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classevil_1_1_thread_signal-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">evil::ThreadSignal&lt; Args &gt; Class Template Reference</div>  </div>
@@ -141,71 +144,60 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4f13fca0ca06ffb8220d2502f94772dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29a3752b98a4cf56da63eca75378e517"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classevil_1_1_thread_signal.html">ThreadSignal</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_thread_signal.html#a29a3752b98a4cf56da63eca75378e517">operator=</a> (<a class="el" href="classevil_1_1_thread_signal.html">ThreadSignal</a> &amp;&amp;other)=delete</td></tr>
 <tr class="separator:a29a3752b98a4cf56da63eca75378e517"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classevil_1_1_signal_base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classevil_1_1_signal_base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classevil_1_1_signal_base.html">evil::SignalBase</a></td></tr>
-<tr class="memitem:a44b9cbc97cd13e4e6ca7ce6d03e18660 inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a44b9cbc97cd13e4e6ca7ce6d03e18660">SignalBase</a> (bool bThreadSafe=false, const char *<a class="el" href="classevil_1_1_signal_base.html#adee0e911e15d730ddd32f5e1b29262f4">name</a>=<a class="el" href="slot-base_8h.html#af05ffd82b4fc6e802087af7810be7b0b">NO_NAME</a>)</td></tr>
-<tr class="separator:a44b9cbc97cd13e4e6ca7ce6d03e18660 inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b7473f70375454cb75949a518077aa8 inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a2b7473f70375454cb75949a518077aa8">~SignalBase</a> ()</td></tr>
-<tr class="memdesc:a2b7473f70375454cb75949a518077aa8 inherit pub_methods_classevil_1_1_signal_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">needs to remove all slots  <a href="#a2b7473f70375454cb75949a518077aa8">More...</a><br /></td></tr>
-<tr class="separator:a2b7473f70375454cb75949a518077aa8 inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adee0e911e15d730ddd32f5e1b29262f4 inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#adee0e911e15d730ddd32f5e1b29262f4">name</a> () const </td></tr>
-<tr class="memdesc:adee0e911e15d730ddd32f5e1b29262f4 inherit pub_methods_classevil_1_1_signal_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the signals name.  <a href="#adee0e911e15d730ddd32f5e1b29262f4">More...</a><br /></td></tr>
-<tr class="separator:adee0e911e15d730ddd32f5e1b29262f4 inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a402a21dfd6e55d353ff17d2cb2233dbe inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a402a21dfd6e55d353ff17d2cb2233dbe">add</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot, int priority=0, bool active=true)</td></tr>
-<tr class="separator:a402a21dfd6e55d353ff17d2cb2233dbe inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4b7a44f5e0c89b611ded72b546ec826 inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#ac4b7a44f5e0c89b611ded72b546ec826">addOnce</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot, int priority=0, bool active=true)</td></tr>
-<tr class="separator:ac4b7a44f5e0c89b611ded72b546ec826 inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2702a2af693c78c8def7d00c40b86c51 inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a2702a2af693c78c8def7d00c40b86c51">remove</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot)</td></tr>
-<tr class="memdesc:a2702a2af693c78c8def7d00c40b86c51 inherit pub_methods_classevil_1_1_signal_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a single slot from this signal. Priority, active state and fire_once state are not preserved.  <a href="#a2702a2af693c78c8def7d00c40b86c51">More...</a><br /></td></tr>
-<tr class="separator:a2702a2af693c78c8def7d00c40b86c51 inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08d0de94e03ef6e9c68c8ee9ea0c58b1 inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a08d0de94e03ef6e9c68c8ee9ea0c58b1">removeAll</a> ()</td></tr>
-<tr class="memdesc:a08d0de94e03ef6e9c68c8ee9ea0c58b1 inherit pub_methods_classevil_1_1_signal_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all slots from this signal. Priority, active state and fire_once state are not preserved.  <a href="#a08d0de94e03ef6e9c68c8ee9ea0c58b1">More...</a><br /></td></tr>
-<tr class="separator:a08d0de94e03ef6e9c68c8ee9ea0c58b1 inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae33b86aa3520ba9efdde7da306aa154 inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#aae33b86aa3520ba9efdde7da306aa154">numSlots</a> ()</td></tr>
-<tr class="memdesc:aae33b86aa3520ba9efdde7da306aa154 inherit pub_methods_classevil_1_1_signal_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">return how many slots are connected  <a href="#aae33b86aa3520ba9efdde7da306aa154">More...</a><br /></td></tr>
-<tr class="separator:aae33b86aa3520ba9efdde7da306aa154 inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e0d0ec690e849e4c5f87c0edf5a2e1f inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a5e0d0ec690e849e4c5f87c0edf5a2e1f">hasSlot</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot)</td></tr>
-<tr class="memdesc:a5e0d0ec690e849e4c5f87c0edf5a2e1f inherit pub_methods_classevil_1_1_signal_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true is this signal contains a slot  <a href="#a5e0d0ec690e849e4c5f87c0edf5a2e1f">More...</a><br /></td></tr>
-<tr class="separator:a5e0d0ec690e849e4c5f87c0edf5a2e1f inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a321dfc4be80597fcb5d5fcb013b76869 inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a321dfc4be80597fcb5d5fcb013b76869">SignalBase</a> (const <a class="el" href="classevil_1_1_signal_base.html">SignalBase</a> &amp;rhs)=delete</td></tr>
-<tr class="separator:a321dfc4be80597fcb5d5fcb013b76869 inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9fb74b4447027f046342836f7e2effc inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classevil_1_1_signal_base.html">SignalBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#af9fb74b4447027f046342836f7e2effc">operator=</a> (const <a class="el" href="classevil_1_1_signal_base.html">SignalBase</a> &amp;rhs)=delete</td></tr>
-<tr class="separator:af9fb74b4447027f046342836f7e2effc inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0ccb13e7d10cd53e692d7872b738ccb inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#ac0ccb13e7d10cd53e692d7872b738ccb">SignalBase</a> (<a class="el" href="classevil_1_1_signal_base.html">SignalBase</a> &amp;&amp;other)=delete</td></tr>
-<tr class="separator:ac0ccb13e7d10cd53e692d7872b738ccb inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03a9653058174b85e9ce853b71393d0e inherit pub_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classevil_1_1_signal_base.html">SignalBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a03a9653058174b85e9ce853b71393d0e">operator=</a> (<a class="el" href="classevil_1_1_signal_base.html">SignalBase</a> &amp;&amp;other)=delete</td></tr>
-<tr class="separator:a03a9653058174b85e9ce853b71393d0e inherit pub_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adee0e911e15d730ddd32f5e1b29262f4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#adee0e911e15d730ddd32f5e1b29262f4">name</a> () const </td></tr>
+<tr class="memdesc:adee0e911e15d730ddd32f5e1b29262f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the signals name.  <a href="#adee0e911e15d730ddd32f5e1b29262f4">More...</a><br /></td></tr>
+<tr class="separator:adee0e911e15d730ddd32f5e1b29262f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a402a21dfd6e55d353ff17d2cb2233dbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a402a21dfd6e55d353ff17d2cb2233dbe">add</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot, int priority=0, bool active=true)</td></tr>
+<tr class="separator:a402a21dfd6e55d353ff17d2cb2233dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4b7a44f5e0c89b611ded72b546ec826"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#ac4b7a44f5e0c89b611ded72b546ec826">addOnce</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot, int priority=0, bool active=true)</td></tr>
+<tr class="separator:ac4b7a44f5e0c89b611ded72b546ec826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2702a2af693c78c8def7d00c40b86c51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a2702a2af693c78c8def7d00c40b86c51">remove</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot)</td></tr>
+<tr class="memdesc:a2702a2af693c78c8def7d00c40b86c51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a single slot from this signal. Priority, active state and fire_once state are not preserved.  <a href="#a2702a2af693c78c8def7d00c40b86c51">More...</a><br /></td></tr>
+<tr class="separator:a2702a2af693c78c8def7d00c40b86c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08d0de94e03ef6e9c68c8ee9ea0c58b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a08d0de94e03ef6e9c68c8ee9ea0c58b1">removeAll</a> ()</td></tr>
+<tr class="memdesc:a08d0de94e03ef6e9c68c8ee9ea0c58b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all slots from this signal. Priority, active state and fire_once state are not preserved.  <a href="#a08d0de94e03ef6e9c68c8ee9ea0c58b1">More...</a><br /></td></tr>
+<tr class="separator:a08d0de94e03ef6e9c68c8ee9ea0c58b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae33b86aa3520ba9efdde7da306aa154"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#aae33b86aa3520ba9efdde7da306aa154">numSlots</a> ()</td></tr>
+<tr class="memdesc:aae33b86aa3520ba9efdde7da306aa154"><td class="mdescLeft">&#160;</td><td class="mdescRight">return how many slots are connected  <a href="#aae33b86aa3520ba9efdde7da306aa154">More...</a><br /></td></tr>
+<tr class="separator:aae33b86aa3520ba9efdde7da306aa154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e0d0ec690e849e4c5f87c0edf5a2e1f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a5e0d0ec690e849e4c5f87c0edf5a2e1f">hasSlot</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot)</td></tr>
+<tr class="memdesc:a5e0d0ec690e849e4c5f87c0edf5a2e1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true is this signal contains a slot  <a href="#a5e0d0ec690e849e4c5f87c0edf5a2e1f">More...</a><br /></td></tr>
+<tr class="separator:a5e0d0ec690e849e4c5f87c0edf5a2e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_types_classevil_1_1_signal_base"><td colspan="2" onclick="javascript:toggleInherit('pro_types_classevil_1_1_signal_base')"><img src="closed.png" alt="-"/>&#160;Protected Types inherited from <a class="el" href="classevil_1_1_signal_base.html">evil::SignalBase</a></td></tr>
-<tr class="memitem:a79b4166581ee282403b54b58b6a2cf97 inherit pro_types_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">typedef std::list&lt; <a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a79b4166581ee282403b54b58b6a2cf97">type_slot_list</a></td></tr>
-<tr class="separator:a79b4166581ee282403b54b58b6a2cf97 inherit pro_types_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d9ceb5d6708b221913f5b6a9291ebfc inherit pro_types_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">typedef type_slot_list::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a5d9ceb5d6708b221913f5b6a9291ebfc">type_slot_list_iter</a></td></tr>
-<tr class="separator:a5d9ceb5d6708b221913f5b6a9291ebfc inherit pro_types_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_classevil_1_1_signal_base"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classevil_1_1_signal_base')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classevil_1_1_signal_base.html">evil::SignalBase</a></td></tr>
-<tr class="memitem:a17548628d987cf06a9268eeafbb6d0d7 inherit pro_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a17548628d987cf06a9268eeafbb6d0d7">rawRemoveSlot</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot)</td></tr>
-<tr class="separator:a17548628d987cf06a9268eeafbb6d0d7 inherit pro_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acad5a2962e0ab904924098df68ad9ccf inherit pro_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#acad5a2962e0ab904924098df68ad9ccf">rawRemoveAll</a> ()</td></tr>
-<tr class="separator:acad5a2962e0ab904924098df68ad9ccf inherit pro_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf99e4ab934ce0819bf43a6ffdf1b1a8 inherit pro_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#abf99e4ab934ce0819bf43a6ffdf1b1a8">rawInsertSlot</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot)</td></tr>
-<tr class="separator:abf99e4ab934ce0819bf43a6ffdf1b1a8 inherit pro_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98cb9f2da303f70699cb54be8274133e inherit pro_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a98cb9f2da303f70699cb54be8274133e">removeCompletedSlots</a> ()</td></tr>
-<tr class="memdesc:a98cb9f2da303f70699cb54be8274133e inherit pro_methods_classevil_1_1_signal_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">used internally to remove fireOnce slots  <a href="#a98cb9f2da303f70699cb54be8274133e">More...</a><br /></td></tr>
-<tr class="separator:a98cb9f2da303f70699cb54be8274133e inherit pro_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd874faea7f36dce4b619f50d8fd352c inherit pro_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#afd874faea7f36dce4b619f50d8fd352c">addSlot</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot, bool fire_once, int priority=0, bool active=true)</td></tr>
-<tr class="separator:afd874faea7f36dce4b619f50d8fd352c inherit pro_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52ded547201b058d3999c2a8ac2553eb inherit pro_methods_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">std::mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a52ded547201b058d3999c2a8ac2553eb">slotMutex</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot)</td></tr>
-<tr class="separator:a52ded547201b058d3999c2a8ac2553eb inherit pro_methods_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classevil_1_1_signal_base"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classevil_1_1_signal_base')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classevil_1_1_signal_base.html">evil::SignalBase</a></td></tr>
-<tr class="memitem:ac4e707762d88b22de281f24f39ac9100 inherit pro_attribs_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#ac4e707762d88b22de281f24f39ac9100">mstrName</a></td></tr>
-<tr class="memdesc:ac4e707762d88b22de281f24f39ac9100 inherit pro_attribs_classevil_1_1_signal_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional. Used to give the signal a name - helps with debugging.  <a href="#ac4e707762d88b22de281f24f39ac9100">More...</a><br /></td></tr>
-<tr class="separator:ac4e707762d88b22de281f24f39ac9100 inherit pro_attribs_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74dedefacb5e2f46f656e18f144da914 inherit pro_attribs_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top">const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a74dedefacb5e2f46f656e18f144da914">mbThreadSafe</a></td></tr>
-<tr class="separator:a74dedefacb5e2f46f656e18f144da914 inherit pro_attribs_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a357536f886f5ed377de86b1d9544e621 inherit pro_attribs_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classevil_1_1_read_write_mutex.html">ReadWriteMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a357536f886f5ed377de86b1d9544e621">mRWMutex</a></td></tr>
-<tr class="separator:a357536f886f5ed377de86b1d9544e621 inherit pro_attribs_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a982dc11ef40430c192c779a4d8cf0d43 inherit pro_attribs_classevil_1_1_signal_base"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classevil_1_1_signal_base.html#a79b4166581ee282403b54b58b6a2cf97">type_slot_list</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a982dc11ef40430c192c779a4d8cf0d43">mlistSlots</a></td></tr>
-<tr class="separator:a982dc11ef40430c192c779a4d8cf0d43 inherit pro_attribs_classevil_1_1_signal_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:a79b4166581ee282403b54b58b6a2cf97"><td class="memItemLeft" align="right" valign="top">typedef std::list&lt; <a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a79b4166581ee282403b54b58b6a2cf97">type_slot_list</a></td></tr>
+<tr class="separator:a79b4166581ee282403b54b58b6a2cf97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d9ceb5d6708b221913f5b6a9291ebfc"><td class="memItemLeft" align="right" valign="top">typedef type_slot_list::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a5d9ceb5d6708b221913f5b6a9291ebfc">type_slot_list_iter</a></td></tr>
+<tr class="separator:a5d9ceb5d6708b221913f5b6a9291ebfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a17548628d987cf06a9268eeafbb6d0d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a17548628d987cf06a9268eeafbb6d0d7">rawRemoveSlot</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot)</td></tr>
+<tr class="separator:a17548628d987cf06a9268eeafbb6d0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acad5a2962e0ab904924098df68ad9ccf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#acad5a2962e0ab904924098df68ad9ccf">rawRemoveAll</a> ()</td></tr>
+<tr class="separator:acad5a2962e0ab904924098df68ad9ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf99e4ab934ce0819bf43a6ffdf1b1a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#abf99e4ab934ce0819bf43a6ffdf1b1a8">rawInsertSlot</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot)</td></tr>
+<tr class="separator:abf99e4ab934ce0819bf43a6ffdf1b1a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98cb9f2da303f70699cb54be8274133e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a98cb9f2da303f70699cb54be8274133e">removeCompletedSlots</a> ()</td></tr>
+<tr class="memdesc:a98cb9f2da303f70699cb54be8274133e"><td class="mdescLeft">&#160;</td><td class="mdescRight">used internally to remove fireOnce slots  <a href="#a98cb9f2da303f70699cb54be8274133e">More...</a><br /></td></tr>
+<tr class="separator:a98cb9f2da303f70699cb54be8274133e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd874faea7f36dce4b619f50d8fd352c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#afd874faea7f36dce4b619f50d8fd352c">addSlot</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot, bool fire_once, int priority=0, bool active=true)</td></tr>
+<tr class="separator:afd874faea7f36dce4b619f50d8fd352c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52ded547201b058d3999c2a8ac2553eb"><td class="memItemLeft" align="right" valign="top">std::mutex &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a52ded547201b058d3999c2a8ac2553eb">slotMutex</a> (<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *slot)</td></tr>
+<tr class="separator:a52ded547201b058d3999c2a8ac2553eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:ac4e707762d88b22de281f24f39ac9100"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#ac4e707762d88b22de281f24f39ac9100">mstrName</a></td></tr>
+<tr class="memdesc:ac4e707762d88b22de281f24f39ac9100"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional. Used to give the signal a name - helps with debugging.  <a href="#ac4e707762d88b22de281f24f39ac9100">More...</a><br /></td></tr>
+<tr class="separator:ac4e707762d88b22de281f24f39ac9100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74dedefacb5e2f46f656e18f144da914"><td class="memItemLeft" align="right" valign="top">const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a74dedefacb5e2f46f656e18f144da914">mbThreadSafe</a></td></tr>
+<tr class="separator:a74dedefacb5e2f46f656e18f144da914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a357536f886f5ed377de86b1d9544e621"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classevil_1_1_read_write_mutex.html">ReadWriteMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a357536f886f5ed377de86b1d9544e621">mRWMutex</a></td></tr>
+<tr class="separator:a357536f886f5ed377de86b1d9544e621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a982dc11ef40430c192c779a4d8cf0d43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classevil_1_1_signal_base.html#a79b4166581ee282403b54b58b6a2cf97">type_slot_list</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classevil_1_1_signal_base.html#a982dc11ef40430c192c779a4d8cf0d43">mlistSlots</a></td></tr>
+<tr class="separator:a982dc11ef40430c192c779a4d8cf0d43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename... Args&gt;<br />
@@ -215,7 +207,52 @@ class evil::ThreadSignal&lt; Args &gt;</h3>
 <p>The <a class="el" href="classevil_1_1_thread_signal.html" title="The thread safe specialisation of the underlying SignalBase class. ">ThreadSignal</a> class is intended to be used in conjunction with the <a class="el" href="classevil_1_1_thread_slot.html" title="The thread safe specialisation of the underlying SlotBase class. ">ThreadSlot</a> class. This version provides a threadsafe specialisation of the underlying signals and slots mechanism. What this guarantees is that you can interact with both the signal and slot from mutilple threads simultaneously without conflict. </p>
 
 <p>Definition at line <a class="el" href="thread-signal_8h_source.html#l00020">20</a> of file <a class="el" href="thread-signal_8h_source.html">thread-signal.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a79b4166581ee282403b54b58b6a2cf97"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::list&lt;<a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *&gt; <a class="el" href="classevil_1_1_signal_base.html#a79b4166581ee282403b54b58b6a2cf97">evil::SignalBase::type_slot_list</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="signal-base_8h_source.html#l00030">30</a> of file <a class="el" href="signal-base_8h_source.html">signal-base.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5d9ceb5d6708b221913f5b6a9291ebfc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef type_slot_list::iterator <a class="el" href="classevil_1_1_signal_base.html#a5d9ceb5d6708b221913f5b6a9291ebfc">evil::SignalBase::type_slot_list_iter</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="signal-base_8h_source.html#l00031">31</a> of file <a class="el" href="signal-base_8h_source.html">signal-base.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a27cbeef43a778d32a415379f930ef7d9"></a>
 <div class="memitem">
 <div class="memproto">
@@ -343,6 +380,203 @@ template&lt;typename... Args&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a402a21dfd6e55d353ff17d2cb2233dbe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void evil::SignalBase::add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *&#160;</td>
+          <td class="paramname"><em>slot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>priority</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>active</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Add a slot to this signal. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>The slot you want to add to this signal. Care that the template definition matches this one. </td></tr>
+    <tr><td class="paramname">priority</td><td>Optionally assign a priortiy to the slot. Priority zero is normal. Higher fires earlier. </td></tr>
+    <tr><td class="paramname">active</td><td>Optionally deactivate the slot on creation by setting active to false. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00138">138</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_a402a21dfd6e55d353ff17d2cb2233dbe_cgraph.png" border="0" usemap="#classevil_1_1_signal_base_a402a21dfd6e55d353ff17d2cb2233dbe_cgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_a402a21dfd6e55d353ff17d2cb2233dbe_cgraph" id="classevil_1_1_signal_base_a402a21dfd6e55d353ff17d2cb2233dbe_cgraph">
+<area shape="rect" id="node2" href="classevil_1_1_signal_base.html#afd874faea7f36dce4b619f50d8fd352c" title="evil::SignalBase::addSlot" alt="" coords="196,31,363,57"/>
+<area shape="rect" id="node3" href="classevil_1_1_slot_base.html#a933c938d390e31d9d55ce20d6885a82f" title="evil::SlotBase::connectSignal" alt="" coords="414,5,605,32"/>
+<area shape="rect" id="node5" href="classevil_1_1_signal_base.html#abf99e4ab934ce0819bf43a6ffdf1b1a8" title="evil::SignalBase::rawInsertSlot" alt="" coords="411,56,608,83"/>
+<area shape="rect" id="node4" href="classevil_1_1_slot_base.html#a38f8a55ca18122554084fc0fbe04c5b4" title="evil::SlotBase::signal" alt="" coords="656,5,799,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac4b7a44f5e0c89b611ded72b546ec826"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void evil::SignalBase::addOnce </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *&#160;</td>
+          <td class="paramname"><em>slot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>priority</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>active</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Add a slot to this signal to fire once and be removed. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>The slot you want to add to this signal. Care that the template definition matches this one. </td></tr>
+    <tr><td class="paramname">priority</td><td>Optionally assign a priortiy to the slot. Priority zero is normal. Higher fires earlier. </td></tr>
+    <tr><td class="paramname">active</td><td>Optionally deactivate the slot on creation by setting active to false. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00142">142</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_ac4b7a44f5e0c89b611ded72b546ec826_cgraph.png" border="0" usemap="#classevil_1_1_signal_base_ac4b7a44f5e0c89b611ded72b546ec826_cgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_ac4b7a44f5e0c89b611ded72b546ec826_cgraph" id="classevil_1_1_signal_base_ac4b7a44f5e0c89b611ded72b546ec826_cgraph">
+<area shape="rect" id="node2" href="classevil_1_1_signal_base.html#afd874faea7f36dce4b619f50d8fd352c" title="evil::SignalBase::addSlot" alt="" coords="228,31,395,57"/>
+<area shape="rect" id="node3" href="classevil_1_1_slot_base.html#a933c938d390e31d9d55ce20d6885a82f" title="evil::SlotBase::connectSignal" alt="" coords="446,5,637,32"/>
+<area shape="rect" id="node5" href="classevil_1_1_signal_base.html#abf99e4ab934ce0819bf43a6ffdf1b1a8" title="evil::SignalBase::rawInsertSlot" alt="" coords="443,56,640,83"/>
+<area shape="rect" id="node4" href="classevil_1_1_slot_base.html#a38f8a55ca18122554084fc0fbe04c5b4" title="evil::SlotBase::signal" alt="" coords="688,5,831,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="afd874faea7f36dce4b619f50d8fd352c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void evil::SignalBase::addSlot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *&#160;</td>
+          <td class="paramname"><em>slot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>fire_once</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>priority</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>active</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00091">91</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_afd874faea7f36dce4b619f50d8fd352c_cgraph.png" border="0" usemap="#classevil_1_1_signal_base_afd874faea7f36dce4b619f50d8fd352c_cgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_afd874faea7f36dce4b619f50d8fd352c_cgraph" id="classevil_1_1_signal_base_afd874faea7f36dce4b619f50d8fd352c_cgraph">
+<area shape="rect" id="node2" href="classevil_1_1_slot_base.html#a933c938d390e31d9d55ce20d6885a82f" title="evil::SlotBase::connectSignal" alt="" coords="223,5,414,32"/>
+<area shape="rect" id="node4" href="classevil_1_1_signal_base.html#abf99e4ab934ce0819bf43a6ffdf1b1a8" title="evil::SignalBase::rawInsertSlot" alt="" coords="220,56,417,83"/>
+<area shape="rect" id="node3" href="classevil_1_1_slot_base.html#a38f8a55ca18122554084fc0fbe04c5b4" title="evil::SlotBase::signal" alt="" coords="465,5,608,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_afd874faea7f36dce4b619f50d8fd352c_icgraph.png" border="0" usemap="#classevil_1_1_signal_base_afd874faea7f36dce4b619f50d8fd352c_icgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_afd874faea7f36dce4b619f50d8fd352c_icgraph" id="classevil_1_1_signal_base_afd874faea7f36dce4b619f50d8fd352c_icgraph">
+<area shape="rect" id="node2" href="classevil_1_1_signal_base.html#a402a21dfd6e55d353ff17d2cb2233dbe" title="evil::SignalBase::add" alt="" coords="236,5,379,32"/>
+<area shape="rect" id="node3" href="classevil_1_1_signal_base.html#ac4b7a44f5e0c89b611ded72b546ec826" title="evil::SignalBase::addOnce" alt="" coords="220,56,395,83"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="adb6bcb40e70db26a8279df2f782d20d1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -382,6 +616,98 @@ Here is the call graph for this function:</div>
 </map>
 </div>
 </p>
+
+</div>
+</div>
+<a class="anchor" id="a5e0d0ec690e849e4c5f87c0edf5a2e1f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool evil::SignalBase::hasSlot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *&#160;</td>
+          <td class="paramname"><em>slot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return true is this signal contains a slot </p>
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00168">168</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adee0e911e15d730ddd32f5e1b29262f4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string evil::SignalBase::name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get the signals name. </p>
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00133">133</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_adee0e911e15d730ddd32f5e1b29262f4_icgraph.png" border="0" usemap="#classevil_1_1_signal_base_adee0e911e15d730ddd32f5e1b29262f4_icgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_adee0e911e15d730ddd32f5e1b29262f4_icgraph" id="classevil_1_1_signal_base_adee0e911e15d730ddd32f5e1b29262f4_icgraph">
+<area shape="rect" id="node2" href="classevil_1_1_signal_base.html#a44b9cbc97cd13e4e6ca7ce6d03e18660" title="evil::SignalBase::SignalBase" alt="" coords="208,5,396,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aae33b86aa3520ba9efdde7da306aa154"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int evil::SignalBase::numSlots </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>return how many slots are connected </p>
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00178">178</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
 
 </div>
 </div>
@@ -444,6 +770,368 @@ template&lt;typename... Args&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abf99e4ab934ce0819bf43a6ffdf1b1a8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void evil::SignalBase::rawInsertSlot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *&#160;</td>
+          <td class="paramname"><em>slot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00029">29</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_abf99e4ab934ce0819bf43a6ffdf1b1a8_icgraph.png" border="0" usemap="#classevil_1_1_signal_base_abf99e4ab934ce0819bf43a6ffdf1b1a8_icgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_abf99e4ab934ce0819bf43a6ffdf1b1a8_icgraph" id="classevil_1_1_signal_base_abf99e4ab934ce0819bf43a6ffdf1b1a8_icgraph">
+<area shape="rect" id="node2" href="classevil_1_1_signal_base.html#afd874faea7f36dce4b619f50d8fd352c" title="evil::SignalBase::addSlot" alt="" coords="251,31,417,57"/>
+<area shape="rect" id="node3" href="classevil_1_1_signal_base.html#a402a21dfd6e55d353ff17d2cb2233dbe" title="evil::SignalBase::add" alt="" coords="481,5,624,32"/>
+<area shape="rect" id="node4" href="classevil_1_1_signal_base.html#ac4b7a44f5e0c89b611ded72b546ec826" title="evil::SignalBase::addOnce" alt="" coords="465,56,640,83"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="acad5a2962e0ab904924098df68ad9ccf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void evil::SignalBase::rawRemoveAll </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00020">20</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_acad5a2962e0ab904924098df68ad9ccf_icgraph.png" border="0" usemap="#classevil_1_1_signal_base_acad5a2962e0ab904924098df68ad9ccf_icgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_acad5a2962e0ab904924098df68ad9ccf_icgraph" id="classevil_1_1_signal_base_acad5a2962e0ab904924098df68ad9ccf_icgraph">
+<area shape="rect" id="node2" href="classevil_1_1_signal_base.html#a2b7473f70375454cb75949a518077aa8" title="needs to remove all slots " alt="" coords="284,5,407,47"/>
+<area shape="rect" id="node3" href="classevil_1_1_signal_base.html#a08d0de94e03ef6e9c68c8ee9ea0c58b1" title="Remove all slots from this signal. Priority, active state and fire_once state are not preserved..." alt="" coords="256,71,435,98"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a17548628d987cf06a9268eeafbb6d0d7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void evil::SignalBase::rawRemoveSlot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *&#160;</td>
+          <td class="paramname"><em>slot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00015">15</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_a17548628d987cf06a9268eeafbb6d0d7_icgraph.png" border="0" usemap="#classevil_1_1_signal_base_a17548628d987cf06a9268eeafbb6d0d7_icgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_a17548628d987cf06a9268eeafbb6d0d7_icgraph" id="classevil_1_1_signal_base_a17548628d987cf06a9268eeafbb6d0d7_icgraph">
+<area shape="rect" id="node2" href="classevil_1_1_signal_base.html#a2702a2af693c78c8def7d00c40b86c51" title="Remove a single slot from this signal. Priority, active state and fire_once state are not preserved..." alt="" coords="264,5,427,32"/>
+<area shape="rect" id="node3" href="classevil_1_1_slot_base.html#a8b182fbf72f602dcf56e45f85a5ccce9" title="evil::SlotBase::~SlotBase" alt="" coords="475,5,645,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a2702a2af693c78c8def7d00c40b86c51"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void evil::SignalBase::remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *&#160;</td>
+          <td class="paramname"><em>slot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove a single slot from this signal. Priority, active state and fire_once state are not preserved. </p>
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00146">146</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_a2702a2af693c78c8def7d00c40b86c51_cgraph.png" border="0" usemap="#classevil_1_1_signal_base_a2702a2af693c78c8def7d00c40b86c51_cgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_a2702a2af693c78c8def7d00c40b86c51_cgraph" id="classevil_1_1_signal_base_a2702a2af693c78c8def7d00c40b86c51_cgraph">
+<area shape="rect" id="node2" href="classevil_1_1_signal_base.html#a17548628d987cf06a9268eeafbb6d0d7" title="evil::SignalBase::rawRemoveSlot" alt="" coords="216,5,427,32"/>
+<area shape="rect" id="node3" href="classevil_1_1_slot_base.html#a8cd7ea79b4d7f3bd52253693b7fc724b" title="evil::SlotBase::releaseSignal" alt="" coords="228,56,415,83"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_a2702a2af693c78c8def7d00c40b86c51_icgraph.png" border="0" usemap="#classevil_1_1_signal_base_a2702a2af693c78c8def7d00c40b86c51_icgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_a2702a2af693c78c8def7d00c40b86c51_icgraph" id="classevil_1_1_signal_base_a2702a2af693c78c8def7d00c40b86c51_icgraph">
+<area shape="rect" id="node2" href="classevil_1_1_slot_base.html#a8b182fbf72f602dcf56e45f85a5ccce9" title="evil::SlotBase::~SlotBase" alt="" coords="216,5,387,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a08d0de94e03ef6e9c68c8ee9ea0c58b1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void evil::SignalBase::removeAll </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove all slots from this signal. Priority, active state and fire_once state are not preserved. </p>
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00158">158</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_a08d0de94e03ef6e9c68c8ee9ea0c58b1_cgraph.png" border="0" usemap="#classevil_1_1_signal_base_a08d0de94e03ef6e9c68c8ee9ea0c58b1_cgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_a08d0de94e03ef6e9c68c8ee9ea0c58b1_cgraph" id="classevil_1_1_signal_base_a08d0de94e03ef6e9c68c8ee9ea0c58b1_cgraph">
+<area shape="rect" id="node2" href="classevil_1_1_signal_base.html#acad5a2962e0ab904924098df68ad9ccf" title="evil::SignalBase::rawRemoveAll" alt="" coords="232,5,435,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a98cb9f2da303f70699cb54be8274133e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void evil::SignalBase::removeCompletedSlots </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>used internally to remove fireOnce slots </p>
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00057">57</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_a98cb9f2da303f70699cb54be8274133e_icgraph.png" border="0" usemap="#classevil_1_1_signal_base_a98cb9f2da303f70699cb54be8274133e_icgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_a98cb9f2da303f70699cb54be8274133e_icgraph" id="classevil_1_1_signal_base_a98cb9f2da303f70699cb54be8274133e_icgraph">
+<area shape="rect" id="node2" href="classevil_1_1_signal.html#a2a043a769019cf449388b750d550884c" title="dispatch a signal that accepts the arguments used in the template instantiation " alt="" coords="216,5,357,32"/>
+<area shape="rect" id="node3" href="classevil_1_1_thread_signal.html#adb6bcb40e70db26a8279df2f782d20d1" title="evil::ThreadSignal\l::dispatch" alt="" coords="225,57,348,98"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a52ded547201b058d3999c2a8ac2553eb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex &amp; evil::SignalBase::slotMutex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classevil_1_1_slot_base.html">SlotBase</a> *&#160;</td>
+          <td class="paramname"><em>slot</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="signal-base_8cpp_source.html#l00108">108</a> of file <a class="el" href="signal-base_8cpp_source.html">signal-base.cpp</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classevil_1_1_signal_base_a52ded547201b058d3999c2a8ac2553eb_icgraph.png" border="0" usemap="#classevil_1_1_signal_base_a52ded547201b058d3999c2a8ac2553eb_icgraph" alt=""/></div>
+<map name="classevil_1_1_signal_base_a52ded547201b058d3999c2a8ac2553eb_icgraph" id="classevil_1_1_signal_base_a52ded547201b058d3999c2a8ac2553eb_icgraph">
+<area shape="rect" id="node2" href="classevil_1_1_thread_signal.html#adb6bcb40e70db26a8279df2f782d20d1" title="evil::ThreadSignal\l::dispatch" alt="" coords="232,5,355,47"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a74dedefacb5e2f46f656e18f144da914"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const bool evil::SignalBase::mbThreadSafe</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="signal-base_8h_source.html#l00035">35</a> of file <a class="el" href="signal-base_8h_source.html">signal-base.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a982dc11ef40430c192c779a4d8cf0d43"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classevil_1_1_signal_base.html#a79b4166581ee282403b54b58b6a2cf97">type_slot_list</a> evil::SignalBase::mlistSlots</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="signal-base_8h_source.html#l00037">37</a> of file <a class="el" href="signal-base_8h_source.html">signal-base.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a357536f886f5ed377de86b1d9544e621"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classevil_1_1_read_write_mutex.html">ReadWriteMutex</a> evil::SignalBase::mRWMutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="signal-base_8h_source.html#l00036">36</a> of file <a class="el" href="signal-base_8h_source.html">signal-base.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac4e707762d88b22de281f24f39ac9100"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string evil::SignalBase::mstrName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Optional. Used to give the signal a name - helps with debugging. </p>
+
+<p>Definition at line <a class="el" href="signal-base_8h_source.html#l00034">34</a> of file <a class="el" href="signal-base_8h_source.html">signal-base.h</a>.</p>
 
 </div>
 </div>
