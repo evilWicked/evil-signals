@@ -37,7 +37,7 @@ Tests.add("Stress Modify", [](evil::TestHarness *th, std::string& result)mutable
 
 //		v.push_back(
 
-//			evil::thread_pool::calc([&] {
+//			evil::thread_pool::run([&] {
 			int numTests = 70000;
 
 			while (numTests) {

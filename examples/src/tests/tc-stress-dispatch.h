@@ -31,7 +31,7 @@ Tests.add("Stress Dispatch", [](evil::TestHarness *th,std::string& result)mutabl
 	//	for (int i = 0; i < numThreads; ++i) {
 	//		th->outDot();
 	//		v.push_back(			
-	//			evil::thread_pool::calc([&]{
+	//			evil::thread_pool::run([&]{
 					for (auto j = 0; j < numSignals; ++j) {
 						if(j%10000==0)th->outDot();
 						Asig.dispatch(1);

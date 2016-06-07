@@ -25,7 +25,7 @@ namespace evil {
 	*/
 	class ThreadPool {
 
-		/// Base class of our tasks to allow them to be queued - defined as an inner class becuase - well thats 
+		/// Base class of our tasks to allow them to be queued - defined as an inner class because - well thats 
 		/// how WillP did it and we are only refactoring so thats how it is.
 		class TaskBase
 		{
@@ -154,7 +154,7 @@ namespace evil {
 		/// This returns a future. If submitting a reference for an argument, it is important to remember
 		/// to wrap it with std::ref or std::cref.
 		template <typename F, typename... Args>
-		auto calc(F&& func, Args&&... args){
+		auto run(F&& func, Args&&... args){
 			auto boundTask = std::bind(std::forward<F>(func), std::forward<Args>(args)...);
 			using ResultType = std::result_of_t<decltype(boundTask)()>;
 			using PackagedTask = std::packaged_task<ResultType()>;
@@ -170,7 +170,7 @@ namespace evil {
 		/// This DOES NOT return a future. If submitting a reference for an argument, it is important to remember
 		/// to wrap it with std::ref or std::cref.
 		template <typename F, typename... Args>
-		void run(F&& func, Args&&... args) {
+		void run_loose(F&& func, Args&&... args) {
 			auto boundTask = std::bind(std::forward<F>(func), std::forward<Args>(args)...);
 			using ResultType = std::result_of_t<decltype(boundTask)()>;
 			using PackagedTask = std::packaged_task<ResultType()>;
@@ -184,7 +184,7 @@ namespace evil {
 		/// This returns a future. If submitting a reference for an argument, it is important to remember
 		/// to wrap it with std::ref or std::cref.
 		template <typename C, typename F, typename... Args>
-		auto calc(C&& cinst, F&& func, Args&&... args) {
+		auto run(C&& cinst, F&& func, Args&&... args) {
 			auto boundTask = std::bind(std::forward<F>(func), std::forward<C>(cinst), std::forward<Args>(args)...);
 			using ResultType = std::result_of_t<decltype(boundTask)()>;
 			using PackagedTask = std::packaged_task<ResultType()>;
@@ -200,7 +200,7 @@ namespace evil {
 		/// This DOES NOT return a future. If submitting a reference for an argument, it is important to remember
 		/// to wrap it with std::ref or std::cref.
 		template <typename C, typename F, typename... Args>
-		void run(C&& cinst, F&& func, Args&&... args) {
+		void run_loose(C&& cinst, F&& func, Args&&... args) {
 			auto boundTask = std::bind(std::forward<F>(func), std::forward<C>(cinst), std::forward<Args>(args)...);
 			using ResultType = std::result_of_t<decltype(boundTask)()>;
 			using PackagedTask = std::packaged_task<ResultType()>;
@@ -238,7 +238,7 @@ namespace evil {
 				std::vector<evil::thread_pool::TaskFuture<void>> v;
 				for (int i = 0; i < numThreads; ++i) {
 					v.push_back(
-						evil::thread_pool::calc([]() {
+						evil::thread_pool::run([]() {
 						std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 					}));
 				}
@@ -248,7 +248,7 @@ namespace evil {
 			const int numThreads = 10;
 			for (int i = 0; i < numThreads; ++i) {
 
-				evil::thread_pool::calc([]() {
+				evil::thread_pool::run([]() {
 					std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 				 });
 
@@ -260,38 +260,38 @@ namespace evil {
 			std::ref or std::cref.
 		*/
 		template <typename F, typename... Args>
-		inline auto calc(F&& func, Args&&... args) {
-			return getThreadPool().calc(std::forward<F>(func), std::forward<Args>(args)...);
+		inline auto run(F&& func, Args&&... args) {
+			return getThreadPool().run(std::forward<F>(func), std::forward<Args>(args)...);
 		}
 
 		///the second signature is for use with class members where an instance of the class needs
 		///to be included as the first parameter
 		template <typename C, typename F, typename... Args>
-		inline auto calc(C&& cinst, F&& func, Args&&... args) {
-			return getThreadPool().calc(std::forward<C>(cinst), std::forward<F>(func), std::forward<Args>(args)...);
+		inline auto run(C&& cinst, F&& func, Args&&... args) {
+			return getThreadPool().run(std::forward<C>(cinst), std::forward<F>(func), std::forward<Args>(args)...);
 		}
 
 		/**
 		  To handle the scenario in which you simply want to fire off the thread and forget about it
-		  you can use the run function.	This submits the job to the queue and then moves on. There is no
+		  you can use the run_loose function.	This submits the job to the queue and then moves on. There is no
 		  return to block the main thread.
 
 		  If submitting a reference for an argument, it is important to remember to wrap it with
 		  std::ref or std::cref.
 		*/
 		template <typename F, typename... Args>
-		void run(F&& func, Args&&... args) {
-			getThreadPool().run(std::forward<F>(func), std::forward<Args>(args)...);
+		void run_loose(F&& func, Args&&... args) {
+			getThreadPool().run_loose(std::forward<F>(func), std::forward<Args>(args)...);
 		}
 
-		///like calc() the second signature is for use with class members where an instance of the class needs
+		///like run() the second signature is for use with class members where an instance of the class needs
 		///to be included as the first parameter
 		///
 		/// If submitting a reference for an argument, it is important to remember to wrap it with
 		/// std::ref or std::cref.
 		template <typename C, typename F, typename... Args>
-		inline auto run(C&& cinst, F&& func, Args&&... args) {
-			getThreadPool().run(std::forward<C>(cinst), std::forward<F>(func), std::forward<Args>(args)...);
+		inline auto run_loose(C&& cinst, F&& func, Args&&... args) {
+			getThreadPool().run_loose(std::forward<C>(cinst), std::forward<F>(func), std::forward<Args>(args)...);
 		}
 
 		/// Get the default thread pool for the application.

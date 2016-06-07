@@ -38,7 +38,7 @@ Tests.add("Thread Stress Modify", [](evil::TestHarness *th, std::string& result)
 
 		v.push_back(
 
-			evil::thread_pool::calc([&] {
+			evil::thread_pool::run([&] {
 			int numTests = 10000;
 
 			while (numTests) {

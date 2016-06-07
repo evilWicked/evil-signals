@@ -33,7 +33,7 @@ Tests.add("Thread: Stress Dispatch", [](evil::TestHarness *th,std::string& resul
 		for (int i = 0; i < numThreads; ++i) {
 			th->outDot();
 			v.push_back(			
-				evil::thread_pool::calc([&]{
+				evil::thread_pool::run([&]{
 					for (auto j = 0; j < numSignals; ++j) {
 						Asig.dispatch(1);
 						//std::this_thread::sleep_for(std::chrono::milliseconds(10));
