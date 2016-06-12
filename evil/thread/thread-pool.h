@@ -135,7 +135,7 @@ namespace evil {
 			:mbDone{ false }, mWorkQueue{}, mThreads{} {
 			try{
 				for (std::uint32_t i = 0u; i < numThreads; ++i){
-					//mThreads.emplace_back(std::thread(&CThreadPool::worker,this));
+					//mThreads.emplace_back(std::thread(&ThreadPool::worker,this));
 				 mThreads.emplace_back(&ThreadPool::worker, this);
 				}
 
@@ -188,7 +188,7 @@ namespace evil {
 			auto boundTask = std::bind(std::forward<F>(func), std::forward<C>(cinst), std::forward<Args>(args)...);
 			using ResultType = std::result_of_t<decltype(boundTask)()>;
 			using PackagedTask = std::packaged_task<ResultType()>;
-			using TaskType = CThreadTask<PackagedTask>;
+			using TaskType = ThreadTask<PackagedTask>;
 
 			PackagedTask task{ std::move(boundTask) };
 			TaskFuture<ResultType> result{ task.get_future() };
@@ -211,7 +211,7 @@ namespace evil {
 		}
 
 		//delete/default all construction/destruction unless we specifically need them.
-		//~CThreadPool() = default;
+		//~ThreadPool() = default;
 		ThreadPool(const ThreadPool& rhs) = delete;
 		ThreadPool& operator=(const ThreadPool& rhs) = delete;
 		ThreadPool(ThreadPool&& other) = delete;
@@ -235,7 +235,7 @@ namespace evil {
 		In other words do this.
 
 				const int numThreads = 10;
-				std::vector<evil::thread_pool::TaskFuture<void>> v;
+				std::vector<evil::ThreadPool::TaskFuture<void>> v;
 				for (int i = 0; i < numThreads; ++i) {
 					v.push_back(
 						evil::thread_pool::run([]() {
