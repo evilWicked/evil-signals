@@ -52,7 +52,7 @@ namespace evil {
 	public:
 
 		///Constructor - you can optionally name this signal. Ths signal can be created to either be threadsafe 
-		///using mutex locks or not by setting the bThreadSafe flag.
+		///uninsg mutex locks or not by setting the bThreadSafe flag.
 		SignalBase(bool bThreadSafe = false,const char* name = NO_NAME);
 	
 		///needs to remove all slots

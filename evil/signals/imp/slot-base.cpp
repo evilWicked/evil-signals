@@ -3,10 +3,10 @@
 #include "slot-base.h"
 #include "signal-base.h"
 
+
 namespace evil {
 
 	
-
 	void SlotBase::connectSignal(SignalBase *signal,bool fire_once/*=false*/,int priority/*=0*/, bool active/*=false*/) {
 
 		if(mbThreadSafe) {

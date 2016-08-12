@@ -113,7 +113,7 @@ namespace evil {
 					thread.join();
 				}
 			}
-			//mWorkQueue.clear();
+			mWorkQueue.clear();
 		}
 
 	public:
@@ -130,13 +130,14 @@ namespace evil {
 
 
 		/// The actual constructor - allows you to manually define the number of threads. 
-		/// Remember more than you have physical threads is a waste of time
+		/// the number depends on how they are being used - if they are all doing heavy work then
+		/// they will be limited by hardware. If they are going to spend a lot of time waiting on io then
+        /// having more than the hardware can support is possible.
 		explicit ThreadPool(const std::uint32_t numThreads)
 			:mbDone{ false }, mWorkQueue{}, mThreads{} {
 			try{
 				for (std::uint32_t i = 0u; i < numThreads; ++i){
-					//mThreads.emplace_back(std::thread(&ThreadPool::worker,this));
-				 mThreads.emplace_back(&ThreadPool::worker, this);
+					mThreads.emplace_back(&ThreadPool::worker, this);
 				}
 
 			}catch (...) {
@@ -264,8 +265,8 @@ namespace evil {
 			return getThreadPool().run(std::forward<F>(func), std::forward<Args>(args)...);
 		}
 
-		///the second signature is for use with class members where an instance of the class needs
-		///to be included as the first parameter
+		/// the second signature is for use with class members where an instance of the class needs
+		/// to be included as the first parameter
 		template <typename C, typename F, typename... Args>
 		inline auto run(C&& cinst, F&& func, Args&&... args) {
 			return getThreadPool().run(std::forward<C>(cinst), std::forward<F>(func), std::forward<Args>(args)...);
